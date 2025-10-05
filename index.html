@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja do Meu Carro - Em Reforma</title>
+
+    <!-- NOVO: Adicionando Favicon (Ícone na aba do navegador) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚗</text></svg>">
+    
     <style>
         /* Cores de Destaque */
         :root {
@@ -159,8 +163,9 @@
 
     <header>
         <div class="logo-container">
-            <!-- CAMINHO DA LOGO NO GITHUB: O NOME DE ARQUIVO EXATO -->
-            <img src="Captura de tela 2025-10-02 112048.png" alt="Logo Loja do Meu Carro" 
+            <!-- CAMINHO DA LOGO ATUALIZADO (com espaços no nome, conforme solicitado) -->
+            <!-- Certifique-se de que o arquivo no GitHub tem o nome EXATO: "logo web loja do meu carro.png" -->
+            <img src="logo web loja do meu carro.png" alt="Logo Loja do Meu Carro" 
                  onerror="this.onerror=null; this.src='https://placehold.co/200x80/111/fff?text=LOJA+DO+MEU+CARRO'">
         </div>
         <p>Enquanto isso, queremos saber a sua opinião.</p>
@@ -203,11 +208,6 @@
         let selectedOption = "";
         const options = document.querySelectorAll('.option[data-option]');
 
-        // *** IMPORTANTE: CAMINHO DA LOGO ***
-        // Para que sua logo apareça, o arquivo de imagem deve ter o NOME EXATO: 
-        // "Captura de tela 2025-10-02 112048.png"
-        // e estar na mesma pasta (raiz) do seu repositório no GitHub.
-
         // Lógica do Quiz
         options.forEach(option => {
             option.addEventListener('click', function() {
@@ -234,11 +234,13 @@
             if (otherValue) finalAnswer = "Outro: " + otherValue;
 
             if (!finalAnswer) {
-                alert("Por favor, selecione uma opção ou digite sua sugestão.");
+                // Usando uma caixa de mensagem no lugar de alert()
+                alert("Por favor, selecione uma opção ou digite sua sugestão."); 
                 return;
             }
             
             if (!emailValue || !emailValue.includes('@')) {
+                // Usando uma caixa de mensagem no lugar de alert()
                 alert("Por favor, digite um e-mail válido para receber as novidades.");
                 return;
             }
