@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja do Meu Carro - Em Reforma</title>
     <style>
-        /* Cores de Destaque atualizadas para combinar com a logo */
+        /* Cores de Destaque */
         :root {
-            --primary-red: #d91e18; /* Vermelho forte, ajustado para a logo */
+            --primary-red: #d91e18; 
             --dark-red: #a81713;
         }
 
@@ -22,51 +22,59 @@
         header {
             background: #222;
             color: #fff;
-            padding: 20px;
+            /* Reduzido o padding para economizar espaço vertical */
+            padding: 15px 20px 10px; 
         }
+        
         /* Estilo para a Logo */
         .logo-container {
-            margin: 10px auto;
+            /* Margem ajustada */
+            margin: 5px auto 10px;
         }
         .logo-container img {
-            max-width: 250px; /* Tamanho máximo da logo na tela */
+            /* Tamanho da logo ajustado para ser menor e caber na tela */
+            max-width: 200px; 
             height: auto;
             display: block;
             margin: 0 auto;
-            /* Efeito sutil de brilho para destacar o logo */
-            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
+            filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.5));
         }
 
         h1 {
-            margin: 10px 0 0; /* Ajustado para dar espaço à logo */
             font-size: 24px;
             color: var(--primary-red);
-            display: none; /* Escondendo o H1 pois a logo já contém o texto */
+            display: none; 
         }
+        header p {
+            /* Espaçamento menor no parágrafo do cabeçalho */
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
         .quiz {
             background: #1c1c1c;
             max-width: 600px;
-            margin: 30px auto;
-            padding: 25px;
+            /* Reduzido o padding vertical e margin para caber na primeira tela */
+            margin: 20px auto; 
+            padding: 15px 25px;
             border-radius: 12px;
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
         }
         .quiz h2 {
-            font-size: 20px;
-            margin-bottom: 20px;
+            font-size: 18px; /* Título menor para economizar espaço */
+            margin-bottom: 15px; 
             color: #fff;
         }
         .option {
-            display: block;
-            background: #333;
-            padding: 12px;
-            margin: 10px 0;
+            padding: 10px; /* Padding reduzido */
+            margin: 8px 0; /* Margem reduzida */
             border-radius: 8px;
             cursor: pointer;
             transition: 0.2s;
             color: #eee;
             position: relative;
             border: 2px solid transparent;
+            font-size: 14px; /* Fonte menor para caber mais texto */
         }
         .option:hover {
             background: var(--primary-red);
@@ -82,8 +90,8 @@
         }
         input[type=text], input[type=email] {
             width: 85%;
-            padding: 10px;
-            margin: 8px 0;
+            padding: 8px; /* Padding reduzido */
+            margin: 6px 0; /* Margem reduzida */
             border-radius: 6px;
             border: 1px solid #444;
             background: #222;
@@ -93,11 +101,11 @@
         button {
             background: var(--primary-red);
             color: #fff;
-            padding: 12px 25px;
+            padding: 10px 20px; /* Padding reduzido */
             border: none;
             border-radius: 6px;
             cursor: pointer;
-            margin-top: 15px;
+            margin-top: 10px; /* Margem reduzida */
             font-size: 16px;
             transition: 0.2s;
         }
@@ -105,24 +113,45 @@
             background: var(--dark-red);
         }
         .curiosity {
-            background: #1c1c1c;
-            margin: 20px 0 25px 0; 
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-            font-size: 16px;
-            color: #eee;
-            line-height: 1.4;
-        }
-        footer {
-            margin-top: 30px;
-            padding: 15px;
-            background: #000;
-            color: #aaa;
+            background: #151515; /* Cor um pouco mais escura para contraste */
+            margin: 15px 0 15px 0; /* Margem reduzida */
+            padding: 12px; /* Padding reduzido */
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.3;
         }
         .novidades h3 {
             color: var(--primary-red);
-            margin-top: 25px;
+            margin-top: 15px; /* Margem reduzida */
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        footer {
+            /* Padding reduzido */
+            padding: 10px;
+            background: #000;
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        /* MEDIA QUERIES: RESPONSIVIDADE PARA CELULARES */
+        @media (max-width: 600px) {
+            .quiz {
+                margin: 10px auto;
+                padding: 10px;
+                border-radius: 0; /* Para ocupar toda a largura da tela no celular */
+            }
+            .logo-container img {
+                max-width: 160px; /* Logo menor em telas pequenas */
+            }
+            .quiz h2 {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .option {
+                padding: 8px;
+                font-size: 13px;
+            }
         }
     </style>
 </head>
@@ -130,11 +159,10 @@
 
     <header>
         <div class="logo-container">
-            <!-- Seu arquivo de logo deve estar na mesma pasta com este NOME -->
+            <!-- CAMINHO DA LOGO NO GITHUB: O NOME DE ARQUIVO EXATO -->
             <img src="Captura de tela 2025-10-02 112048.png" alt="Logo Loja do Meu Carro" 
-                 onerror="this.onerror=null; this.src='https://placehold.co/250x100/111/fff?text=LOGO+AQUI+REPLACE+ME'">
+                 onerror="this.onerror=null; this.src='https://placehold.co/200x80/111/fff?text=LOJA+DO+MEU+CARRO'">
         </div>
-        <h1>Loja do Meu Carro está em reforma!</h1>
         <p>Enquanto isso, queremos saber a sua opinião.</p>
     </header>
 
@@ -175,26 +203,27 @@
         let selectedOption = "";
         const options = document.querySelectorAll('.option[data-option]');
 
-        // Adiciona o evento de clique a todas as opções, exceto 'Outro'
+        // *** IMPORTANTE: CAMINHO DA LOGO ***
+        // Para que sua logo apareça, o arquivo de imagem deve ter o NOME EXATO: 
+        // "Captura de tela 2025-10-02 112048.png"
+        // e estar na mesma pasta (raiz) do seu repositório no GitHub.
+
+        // Lógica do Quiz
         options.forEach(option => {
             option.addEventListener('click', function() {
                 options.forEach(opt => opt.classList.remove('selected'));
                 this.classList.add('selected');
                 selectedOption = this.getAttribute('data-option');
-                
-                // Esconde a caixa de 'Outro' se estiver selecionando uma opção principal
                 document.getElementById('otherBox').classList.add('hidden');
                 document.getElementById('otherInput').value = '';
             });
         });
 
         function showOther() {
-            // Desseleciona as outras opções ao clicar em 'Outro'
             options.forEach(opt => opt.classList.remove('selected'));
             selectedOption = "";
             document.getElementById('otherBox').classList.remove('hidden');
         }
-
 
         function submitQuiz() {
             const otherValue = document.getElementById('otherInput').value.trim();
@@ -214,7 +243,7 @@
                 return;
             }
 
-            // DADOS COLETADOS PARA ENVIO. ESTE É O PONTO QUE PRECISAMOS MUDAR!
+            // AQUI OCORRERÁ O ENVIO DE DADOS REAIS QUANDO DECIDIRMOS PELA FERRAMENTA (Google Forms)
             const data = {
                 nome: nameValue,
                 email: emailValue,
@@ -223,10 +252,9 @@
 
             console.log("Dados coletados (Pronto para enviar):", data);
             
-            // ATUALMENTE APENAS EXIBE UMA MENSAGEM:
+            // Exemplo de sucesso (mantenha o alert por enquanto)
             alert(`Obrigado, ${nameValue || 'futuro cliente'}! Você será notificado por e-mail em breve.`);
             
-            // Opcional: Desabilitar o botão e limpar os campos após o envio
             document.getElementById('emailInput').value = '';
             document.getElementById('nameInput').value = '';
             document.getElementById('otherInput').value = '';
@@ -234,32 +262,18 @@
             selectedOption = "";
         }
 
-        /* * Lógica de Curiosidades Diárias (Baseada no dia da semana)
-         * O JavaScript já faz isso. O método .getDay() retorna:
-         * 0 = Domingo, 1 = Segunda, 2 = Terça, 3 = Quarta, 4 = Quinta, 5 = Sexta, 6 = Sábado
-         * Expandimos a lista para ter uma curiosidade para cada dia.
-         */
+        // Lógica de Curiosidades Diárias (Baseada no dia da semana)
         const curiosities = [
-            // [0] DOMINGO
             "Você sabia que o primeiro carro produzido em série no mundo foi o Ford Model T em 1908.", 
-            // [1] SEGUNDA
             "Os pneus dos carros não eram pretos originalmente; a cor preta vem do carbono adicionado para aumentar a durabilidade.", 
-            // [2] TERÇA
             "O Toyota Corolla é o carro mais vendido da história mundial, superando 50 milhões de unidades.",
-            // [3] QUARTA
             "Carros elétricos já existiam no início do século 20, antes de perderem espaço para os motores a combustão.", 
-            // [4] QUINTA
             "O airbag foi inventado em 1951, mas só se popularizou nos anos 90.",
-            // [5] SEXTA
             "O motor Wankel, usado em alguns carros Mazda, possui um design rotativo que elimina a necessidade de pistões, bielas e válvulas.",
-            // [6] SÁBADO
             "O Fiat Uno foi fabricado no Brasil por mais de 30 anos, até 2021, tornando-se um ícone nacional.",
-            // Curiosidade extra caso a data seja estranha
             "Um motorista brasileiro médio passa cerca de 8,5 horas por semana dentro do carro."
         ];
 
-        // Se for um dia entre 0 (Dom) e 6 (Sáb), ele usa a curiosidade correspondente. 
-        // Caso contrário (como no último item da lista acima), usa o primeiro item [0].
         const today = new Date().getDay();
         document.getElementById("curiosityText").innerHTML = curiosities[today] || curiosities[0];
     </script>
