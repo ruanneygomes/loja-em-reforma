@@ -5,133 +5,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja do Meu Carro - Em Reforma</title>
 
-    <!-- NOVO: Adicionando Favicon (Ícone na aba do navegador) -->
+    <!-- Adicionando Favicon (Ícone na aba do navegador) -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚗</text></svg>">
     
     <style>
         /* Cores de Destaque */
         :root {
-            --primary-red: #d91e18; 
-            --dark-red: #a81713;
+            --primary-red: #d91e18; /* Vermelho principal */
+            --dark-red: #a81713;    /* Vermelho escuro para hover/selected */
+            --background-dark: #111;
+            --card-bg: #1c1c1c;
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #111;
+            background: var(--background-dark);
             color: #eee;
             text-align: center;
         }
         header {
             background: #222;
             color: #fff;
-            /* Reduzido o padding para economizar espaço vertical */
             padding: 15px 20px 10px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
         }
         
         /* Estilo para a Logo */
         .logo-container {
-            /* Margem ajustada */
             margin: 5px auto 10px;
         }
         .logo-container img {
-            /* Tamanho da logo ajustado para ser menor e caber na tela */
-            max-width: 200px; 
+            max-width: 220px; 
             height: auto;
             display: block;
             margin: 0 auto;
-            filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.5));
-        }
-
-        h1 {
-            font-size: 24px;
-            color: var(--primary-red);
-            display: none; 
+            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.6)); /* Sombra da Logo mais viva */
         }
         header p {
-            /* Espaçamento menor no parágrafo do cabeçalho */
             margin-top: 5px;
             margin-bottom: 5px;
+            font-size: 15px;
+            font-weight: 300;
         }
 
         .quiz {
-            background: #1c1c1c;
+            background: var(--card-bg);
             max-width: 600px;
-            /* Reduzido o padding vertical e margin para caber na primeira tela */
-            margin: 20px auto; 
-            padding: 15px 25px;
+            margin: 25px auto; 
+            padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            border: 1px solid #333; /* Borda sutil */
         }
         .quiz h2 {
-            font-size: 18px; /* Título menor para economizar espaço */
-            margin-bottom: 15px; 
+            font-size: 20px; 
+            margin-bottom: 20px; 
             color: #fff;
+            font-weight: 600;
         }
+
+        /* ESTILO NOVO PARA BOTÕES MODERNOS */
         .option {
-            padding: 10px; /* Padding reduzido */
-            margin: 8px 0; /* Margem reduzida */
-            border-radius: 8px;
+            padding: 12px; 
+            margin: 10px 0; 
+            border-radius: 10px; /* Mais arredondado */
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.3s ease; /* Transição mais suave */
             color: #eee;
-            position: relative;
-            border: 2px solid transparent;
-            font-size: 14px; /* Fonte menor para caber mais texto */
+            background: #2a2a2a; /* Fundo mais escuro para profundidade */
+            border: 1px solid #444; 
+            font-size: 15px; 
+            text-align: center; /* CENTRALIZADO CONFORME SOLICITADO */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
+        /* EFEITO DE GLOW MAIS OPACO AO PASSAR O MOUSE */
         .option:hover {
-            background: var(--primary-red);
-            color: #fff;
+            background: #2f2f2f; /* Fundo levemente mais claro */
+            border-color: var(--primary-red);
+            box-shadow: 0 0 10px rgba(217, 30, 24, 0.3); /* GLOW OPACO */
+            transform: translateY(-1px);
         }
         .option.selected {
             background: var(--dark-red);
             color: #fff;
-            border: 2px solid #fff;
+            border: 1px solid var(--primary-red);
+            box-shadow: 0 0 15px rgba(217, 30, 24, 0.5); /* Efeito de brilho ao selecionar */
+            transform: scale(1.02); 
         }
+        /* Fim do Estilo Novo para Botões */
+
         .hidden {
             display: none;
         }
         input[type=text], input[type=email] {
             width: 85%;
-            padding: 8px; /* Padding reduzido */
-            margin: 6px 0; /* Margem reduzida */
-            border-radius: 6px;
+            padding: 10px; 
+            margin: 8px 0; 
+            border-radius: 8px;
             border: 1px solid #444;
             background: #222;
             color: #eee;
-            font-size: 15px;
+            font-size: 16px;
         }
+        
+        /* Estilo para Botão Principal (Quero as novidades) */
         button {
             background: var(--primary-red);
             color: #fff;
-            padding: 10px 20px; /* Padding reduzido */
+            padding: 12px 25px; 
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
-            margin-top: 10px; /* Margem reduzida */
-            font-size: 16px;
-            transition: 0.2s;
+            margin-top: 15px; 
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.2s, transform 0.1s;
+            box-shadow: 0 4px 15px rgba(217, 30, 24, 0.4);
+            width: 90%; /* Ajuste para ter largura responsiva */
         }
         button:hover {
             background: var(--dark-red);
+            transform: translateY(-2px);
         }
+        /* Fim do Estilo Botão Principal */
+
         .curiosity {
-            background: #151515; /* Cor um pouco mais escura para contraste */
-            margin: 15px 0 15px 0; /* Margem reduzida */
-            padding: 12px; /* Padding reduzido */
+            background: #151515; 
+            margin: 15px 0 15px 0; 
+            padding: 15px; 
             border-radius: 8px;
             font-size: 14px;
-            line-height: 1.3;
+            line-height: 1.4;
+            border-left: 4px solid var(--primary-red); /* Linha de destaque */
+            text-align: left;
         }
         .novidades h3 {
             color: var(--primary-red);
-            margin-top: 15px; /* Margem reduzida */
+            margin-top: 15px; 
             margin-bottom: 5px;
-            font-size: 16px;
+            font-size: 17px;
+            font-weight: 600;
         }
         footer {
-            /* Padding reduzido */
             padding: 10px;
             background: #000;
             color: #aaa;
@@ -142,19 +159,26 @@
         @media (max-width: 600px) {
             .quiz {
                 margin: 10px auto;
-                padding: 10px;
-                border-radius: 0; /* Para ocupar toda a largura da tela no celular */
+                padding: 15px;
             }
             .logo-container img {
-                max-width: 160px; /* Logo menor em telas pequenas */
+                max-width: 180px; 
             }
             .quiz h2 {
-                font-size: 16px;
-                margin-bottom: 10px;
+                font-size: 18px;
             }
             .option {
-                padding: 8px;
-                font-size: 13px;
+                font-size: 14px;
+            }
+            button {
+                font-size: 16px;
+                width: 100%;
+            }
+            input[type=text], input[type=email] {
+                width: 100%; /* Ocupa toda a largura do quiz */
+            }
+            header p {
+                font-size: 14px;
             }
         }
     </style>
@@ -163,12 +187,12 @@
 
     <header>
         <div class="logo-container">
-            <!-- CAMINHO DA LOGO ATUALIZADO (com espaços no nome, conforme solicitado) -->
-            <!-- Certifique-se de que o arquivo no GitHub tem o nome EXATO: "logo web loja do meu carro.png" -->
-            <img src="logo web loja do meu carro.png" alt="Logo Loja do Meu Carro" 
-                 onerror="this.onerror=null; this.src='https://placehold.co/200x80/111/fff?text=LOJA+DO+MEU+CARRO'">
+            <!-- CAMINHO DA LOGO: O nome do arquivo no GitHub deve ser 'logo-web-loja-do-meu-carro.png' -->
+            <img src="logo-web-loja-do-meu-carro.png" alt="Logo Loja do Meu Carro" 
+                 onerror="this.onerror=null; this.src='https://placehold.co/220x80/111/fff?text=LOJA+DO+MEU+CARRO'">
         </div>
-        <p>Enquanto isso, queremos saber a sua opinião.</p>
+        <!-- TEXTO: Opção 3 - Curta e Direta -->
+        <p>Nova loja em construção. Deixe sua opinião e garanta um cupom de lançamento!</p>
     </header>
 
     <section class="quiz">
@@ -208,6 +232,13 @@
         let selectedOption = "";
         const options = document.querySelectorAll('.option[data-option]');
 
+        // Função de Validação de E-mail (Regex)
+        function isValidEmail(email) {
+            // Regex que verifica a estrutura básica:
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,4}$/;
+            return emailRegex.test(email);
+        }
+
         // Lógica do Quiz
         options.forEach(option => {
             option.addEventListener('click', function() {
@@ -234,14 +265,13 @@
             if (otherValue) finalAnswer = "Outro: " + otherValue;
 
             if (!finalAnswer) {
-                // Usando uma caixa de mensagem no lugar de alert()
                 alert("Por favor, selecione uma opção ou digite sua sugestão."); 
                 return;
             }
             
-            if (!emailValue || !emailValue.includes('@')) {
-                // Usando uma caixa de mensagem no lugar de alert()
-                alert("Por favor, digite um e-mail válido para receber as novidades.");
+            // Validação de E-mail
+            if (!emailValue || !isValidEmail(emailValue)) {
+                alert("Por favor, digite um e-mail válido para receber as novidades (Ex: seuemail@dominio.com).");
                 return;
             }
 
@@ -264,20 +294,63 @@
             selectedOption = "";
         }
 
-        // Lógica de Curiosidades Diárias (Baseada no dia da semana)
+        // --- NOVO ARRAY DE 30 CURIOSIDADES PARA AUTOMATIZAÇÃO DIÁRIA ---
         const curiosities = [
-            "Você sabia que o primeiro carro produzido em série no mundo foi o Ford Model T em 1908.", 
-            "Os pneus dos carros não eram pretos originalmente; a cor preta vem do carbono adicionado para aumentar a durabilidade.", 
-            "O Toyota Corolla é o carro mais vendido da história mundial, superando 50 milhões de unidades.",
-            "Carros elétricos já existiam no início do século 20, antes de perderem espaço para os motores a combustão.", 
-            "O airbag foi inventado em 1951, mas só se popularizou nos anos 90.",
-            "O motor Wankel, usado em alguns carros Mazda, possui um design rotativo que elimina a necessidade de pistões, bielas e válvulas.",
-            "O Fiat Uno foi fabricado no Brasil por mais de 30 anos, até 2021, tornando-se um ícone nacional.",
-            "Um motorista brasileiro médio passa cerca de 8,5 horas por semana dentro do carro."
+            // Curiosidades de 1 a 10 (História e Mecânica)
+            "Você sabia que o pneu foi inventado antes do carro? Eles eram usados em bicicletas no final do século 19.",
+            "O motor Wankel, usado em alguns carros Mazda, possui um design rotativo que elimina a necessidade de pistões e bielas.",
+            "O primeiro engarrafamento registrado na história aconteceu na cidade de Nova Iorque, em 1903.",
+            "O Ford Model T (1908) foi o primeiro carro produzido em massa, tornando o automóvel acessível à classe média.",
+            "A função real do pedal da embreagem é desconectar o motor das rodas, permitindo a troca de marchas.",
+            "A correia dentada, se não trocada no prazo, pode quebrar e causar um dano total ao motor do seu carro.",
+            "O óleo do motor não só lubrifica, mas também ajuda a resfriar as peças internas do motor.",
+            "O primeiro carro com teto solar foi um Nash Ambassador em 1937.",
+            "O 'chevrolet' foi nomeado em homenagem a Louis Chevrolet, um piloto de corrida suíço.",
+            "A invenção do limpador de para-brisa é creditada a uma mulher, Mary Anderson, em 1903.",
+            
+            // Curiosidades de 11 a 20 (Manutenção e Segurança)
+            "Manter os pneus calibrados corretamente pode economizar até 5% no consumo de combustível.",
+            "O fluido de freio precisa ser trocado periodicamente, pois absorve umidade e perde eficácia com o tempo.",
+            "Dirigir com o tanque na reserva força a bomba de combustível e pode reduzir sua vida útil.",
+            "O farol de neblina deve ser usado apenas em condições de baixa visibilidade (neblina ou chuva forte), nunca à noite na estrada.",
+            "O airbag infla completamente em apenas 30 milissegundos, mais rápido que um piscar de olhos.",
+            "Rodízio de pneus é essencial para garantir o desgaste uniforme e prolongar a vida útil do conjunto.",
+            "A bateria de um carro moderno tem uma vida útil média de 2 a 4 anos, dependendo do uso e clima.",
+            "O cheiro doce de fluido de arrefecimento pode indicar um vazamento no sistema de radiador.",
+            "Uma embreagem mal regulada não só causa dificuldade na troca de marchas, mas também desgasta o disco prematuramente.",
+            "O filtro de cabine (ou filtro de ar-condicionado) deve ser trocado para evitar odores e melhorar a qualidade do ar interno.",
+            
+            // Curiosidades de 21 a 30 (Curiosidades e Performance)
+            "O carro mais rápido do mundo (não de F1) pode acelerar de 0 a 100 km/h em menos de 2 segundos.",
+            "A fibra de carbono é usada em carros de alta performance por ser 5 vezes mais forte e muito mais leve que o aço.",
+            "O recorde de quilometragem percorrida por um único motorista em um carro é de mais de 4,8 milhões de km (Volvo P1800).",
+            "A luz de injeção eletrônica (a 'luz da bomba') acende quando há um problema no sistema de emissões ou no motor.",
+            "O 'turbo lag' é o pequeno atraso entre você pisar no acelerador e o turbo efetivamente entregar a potência.",
+            "Alguns carros de luxo usam câmbios de dupla embreagem (DCT) que conseguem trocar de marcha em menos de 8 milissegundos.",
+            "A cor branca é estatisticamente a cor de carro mais segura, pois é a mais visível em todas as condições de iluminação.",
+            "O sistema de som mais potente já instalado em um carro de produção tinha 34 alto-falantes.",
+            "O primeiro carro a atingir 100 km/h foi elétrico, em 1899.",
+            "Usar combustível de má qualidade pode carbonizar as válvulas e injetores, prejudicando a performance do motor."
         ];
 
-        const today = new Date().getDay();
-        document.getElementById("curiosityText").innerHTML = curiosities[today] || curiosities[0];
+        // LÓGICA DE TROCA DE DICA: A CADA NOVO DIA (24h)
+        function getCuriosityOfTheDay(curiosityList) {
+            const today = new Date();
+            // 1. Calcula o número de dias desde 1º de Janeiro (Dia do Ano)
+            const startOfYear = new Date(today.getFullYear(), 0, 0);
+            const diff = today - startOfYear;
+            const oneDay = 1000 * 60 * 60 * 24;
+            const dayOfYear = Math.floor(diff / oneDay);
+
+            // 2. Garante que o índice não exceda o tamanho da lista (30 curiosidades)
+            // O operador % (resto da divisão) faz a lista se repetir
+            const index = dayOfYear % curiosityList.length;
+
+            return curiosityList[index];
+        }
+
+        // Inicializa a curiosidade
+        document.getElementById("curiosityText").innerHTML = getCuriosityOfTheDay(curiosities);
     </script>
 
 </body>
