@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja do Meu Carro - Em Reforma</title>
 
-    <!-- 🛑 GOOGLE ANALYTICS (GA4) - CONFIGURADO! 🛑 -->
-    <!-- SUBSTITUÍDO: ID de Medição (G-XXXXXXXXXX) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4T4V3N4VE"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -15,24 +13,18 @@
 
       gtag('config', 'G-V4T4V3N4VE');
     </script>
-    <!-- FIM DO GOOGLE ANALYTICS -->
 
-    <!-- METADADOS SEO/OPENGRAPH (Adicionado para melhor compartilhamento) -->
     <meta name="description" content="Nova loja em construção! Participe do nosso quiz e ganhe um cupom de lançamento. Acelere uma nova fase com a Loja do Meu Carro.">
     
-    <!-- OpenGraph Tags (Para compartilhamento em redes sociais) -->
     <meta property="og:title" content="Loja do Meu Carro | Em Construção e com Cupom!">
     <meta property="og:description" content="Deixe sua opinião sobre o que você mais procura e garanta um cupom exclusivo para o lançamento da nova loja.">
-    <!-- ATENÇÃO: Substitua o 'URL_DA_SUA_IMAGEM' por um link público do logo para que ele apareça ao compartilhar. -->
     <meta property="og:image" content="https://placehold.co/1200x630/111/fff?text=LOGO+LOJA+DO+MEU+CARRO">
     <meta property="og:url" content="https://lojadomeucarro.com.br">
     <meta property="og:type" content="website">
 
-    <!-- Ícone da aba -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚗</text></svg>">
     
     <style>
-        /* Cores Base */
         :root {
             --primary-red: #d91e18;
             --dark-red: #a81713;
@@ -47,7 +39,6 @@
             background: var(--background-dark);
             color: #eee;
             text-align: center;
-            /* EFEITO DE FUNDO DE FIBRA DE CARBONO */
             background-color: #1a1a1a;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><rect width="10" height="10" fill="none"/><path d="M0 0h5v5H0zM5 5h5v5H5z" fill="%23222" opacity="0.3"/></svg>');
         }
@@ -58,11 +49,9 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
         }
         
-        /* Logo */
         .logo-container {
             margin: 5px auto 10px;
         }
-        /* Apenas a largura máxima é definida aqui para manter a responsividade */
         .logo-container img {
             max-width: 220px; 
             height: auto;
@@ -93,7 +82,6 @@
             font-weight: 600;
         }
 
-        /* Botões do Quiz (Opções) */
         .option {
             padding: 12px; 
             margin: 10px 0; 
@@ -103,7 +91,7 @@
             color: #eee;
             background: #2a2a2a; 
             border: 1px solid #444; 
-            font-size: 15px; /* Tamanho base dos botões de opção */
+            font-size: 15px;
             text-align: center; 
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
@@ -141,7 +129,6 @@
              box-shadow: 0 0 5px rgba(217, 30, 24, 0.5);
         }
         
-        /* Botão Principal (Envio de Sugestão e E-mail) */
         .main-button {
             background: var(--primary-red);
             color: #fff;
@@ -169,7 +156,6 @@
             box-shadow: none;
         }
         
-        /* Botão de Sugestão */
         #submitSuggestionButton {
             font-size: 16px;
             padding: 10px 20px;
@@ -190,11 +176,11 @@
         }
         .curiosity strong {
              display: block; 
-             margin-bottom: 0px; /* Alterado para 0px para colar o texto */
+             margin-bottom: 0px;
         }
 
         .novidades {
-            border-top: 1px solid #333; /* Linha divisória */
+            border-top: 1px solid #333;
             padding-top: 15px;
             margin-top: 25px;
         }
@@ -212,7 +198,6 @@
             font-size: 12px;
         }
 
-        /* Modal de Confirmação */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -253,7 +238,6 @@
             font-size: 16px;
         }
 
-        /* MEDIA QUERIES */
         @media (max-width: 600px) {
             .quiz {
                 margin: 10px auto;
@@ -284,12 +268,10 @@
         }
     </style>
 </head>
-<body onload="loadSavedData()"> <!-- Chamada adicionada para carregar os dados salvos -->
+<body onload="loadSavedData()">
 
     <header>
         <div class="logo-container">
-            <!-- CORREÇÃO DE ESTÉTICA: Adicionando largura e altura fixas para reservar o espaço. -->
-            <!-- Isso evita o "salto" visual (CLS) quando o logo tenta carregar ou falha e usa o fallback. -->
             <img src="logo web loja do meu carro.png" alt="Logo Loja do Meu Carro" width="220" height="80"
                 onerror="this.onerror=null; this.src='https://placehold.co/220x80/111/fff?text=LOJA+DO+MEU+CARRO'">
         </div>
@@ -306,7 +288,6 @@
             <div class="option" onclick="showOther()">Outro...</div>
         </div>
 
-        <!-- Seção de Sugestão (Outro...) -->
         <div id="otherBox" class="hidden">
             <input type="text" id="otherInput" placeholder="Digite sua sugestão de produto/categoria">
             <button id="submitSuggestionButton" class="main-button" onclick="submitSuggestion()">
@@ -319,7 +300,6 @@
             <span id="curiosityText"></span>
         </div>
 
-        <!-- Seção de Novidades e E-mail -->
         <div class="novidades">
             <h3>Quer receber novidades e um cupom de lançamento?</h3>
         </div>
@@ -334,7 +314,6 @@
         <p>Loja do Meu Carro © 2025 - Estamos acelerando uma nova fase</p>
     </footer>
 
-    <!-- MODAL DE CONFIRMAÇÃO (Substitui o alert) -->
     <div id="modalOverlay" class="modal-overlay">
         <div class="modal-content">
             <h4 id="modalTitle"></h4>
@@ -342,26 +321,13 @@
             <button onclick="hideModal()">Entendi</button>
         </div>
     </div>
-    <!-- FIM DO MODAL -->
 
     <script>
-        // ------------------------------------------------------------------------------------------------
-        // 🛑🛑🛑 GUIA CRÍTICO DE CONFIGURAÇÃO DO GOOGLE FORMS 🛑🛑🛑
-        // ------------------------------------------------------------------------------------------------
-        // PARA O "BACKEND" FUNCIONAR, VOCÊ PRECISA SUBSTITUIR OS PLACEHOLDERS ABAIXO
-        // PELOS CÓDIGOS REAIS DO SEU FORMULÁRIO.
-        // ------------------------------------------------------------------------------------------------
-        
-        // 1. Link de Envio (Action URL do formulário) - JÁ ESTÁ CORRETO
         const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfywwXvO76YA3iai6JYHZ487sATVtCusnxV50tlhgXva5L8pQ/formResponse";
 
-        // 2. IDs dos campos (Entry IDs) - AINDA PRECISAM SER SUBSTITUÍDOS
-        // **SUBSTITUA TODOS OS PLACEHOLDERS DE ENTRADA (ENTRY_ID) PELOS SEUS NÚMEROS REAIS.**
-        const ENTRY_ID_INTERESSE = "<<ENTRY_ID_INTERESSE>>"; // Substitua aqui! (Pergunta 1 do Quiz / Sugestão 'Outro')
-        const ENTRY_ID_NOME = "<<ENTRY_ID_NOME>>";          // Substitua aqui! (Campo Nome)
-        const ENTRY_ID_EMAIL = "<<ENTRY_ID_EMAIL>>";         // Substitua aqui! (Campo E-mail)
-        
-        // ------------------------------------------------------------------------------------------------
+        const ENTRY_ID_INTERESSE = "1460235889"; 
+        const ENTRY_ID_NOME = "837106430";          
+        const ENTRY_ID_EMAIL = "1361017686";         
         
         let selectedOption = "";
         let isSubmittingEmail = false; 
@@ -375,8 +341,6 @@
         const nameInput = document.getElementById('nameInput');
         const emailInput = document.getElementById('emailInput');
 
-
-        // --- FUNÇÕES DE UTILIDADE (Modal e Validação) ---
 
         function showModal(title, message) {
             document.getElementById('modalTitle').innerText = title;
@@ -393,19 +357,11 @@
             return emailRegex.test(email);
         }
         
-        /**
-         * Salva o nome e e-mail no localStorage para pré-preenchimento futuro.
-         * @param {string} name 
-         * @param {string} email 
-         */
         function saveUserData(name, email) {
             if (name) localStorage.setItem('user_name', name);
             if (email) localStorage.setItem('user_email', email);
         }
 
-        /**
-         * Carrega os dados salvos do localStorage ao carregar a página (chamado no body onload).
-         */
         function loadSavedData() {
             const savedName = localStorage.getItem('user_name');
             const savedEmail = localStorage.getItem('user_email');
@@ -414,36 +370,28 @@
             if (savedEmail) emailInput.value = savedEmail;
         }
 
-        // --- LÓGICA DE INTERAÇÃO (Seleção do Quiz) ---
-
-        // Lógica de seleção dos botões do Quiz
         options.forEach(option => {
             option.addEventListener('click', function() {
                 options.forEach(opt => opt.classList.remove('selected'));
                 this.classList.add('selected');
                 selectedOption = this.getAttribute('data-option');
                 
-                // 1. Esconde a caixa "Outro" se uma opção principal for selecionada
                 otherBox.classList.add('hidden');
                 otherInput.value = '';
                 
-                // 2. Envia a resposta do quiz automaticamente (somente se não for a opção "Outro")
                 submitQuizAnswer(selectedOption); 
             });
         });
 
-        // Lógica para mostrar o campo "Outro"
         function showOther() {
             options.forEach(opt => opt.classList.remove('selected'));
-            selectedOption = ""; // Desmarca qualquer opção principal
-            otherBox.classList.remove('hidden'); // Mostra a caixa de texto e o botão de sugestão
+            selectedOption = "";
+            otherBox.classList.remove('hidden');
         }
 
-        // --- FUNÇÃO DE ENVIO GERAL PARA O FORMS ---
         async function sendToForms(data, button, originalText, type) {
             if (button.disabled) return; 
 
-            // VERIFICAÇÃO CRÍTICA DO LINK
             if (!GOOGLE_FORM_URL || !GOOGLE_FORM_URL.startsWith('https://')) {
                 console.error("Erro: O GOOGLE_FORM_URL não foi preenchido corretamente.");
                 showModal("Erro de Configuração", "O link de envio do Google Forms (GOOGLE_FORM_URL) não foi configurado. Por favor, preencha as constantes na seção <script>.");
@@ -458,25 +406,11 @@
 
             try {
                 const formData = new FormData();
-                let hasPlaceholder = false;
-
+                
                 for (const key in data) {
-                    // Verifica se o ENTRY ID é o placeholder. Se for, interrompe e avisa.
-                    if (key.includes("<<ENTRY_ID")) {
-                        hasPlaceholder = true;
-                        break;
-                    }
                     formData.append(key, data[key]);
                 }
                 
-                if (hasPlaceholder) {
-                    console.warn(`Aviso: Um ENTRY ID não foi preenchido. O envio de dados NÃO está funcionando.`);
-                    // O AVISO DE PLACEHOLDER APARECE AQUI!
-                    showModal("Atenção: Entry ID Faltando", `Um ou mais campos de ID de entrada (**ENTRY_ID**) ainda são o placeholder. O envio **NÃO funcionará** corretamente. Por favor, siga o guia de configuração no código!`);
-                    return; // Não faz o fetch se o placeholder estiver presente
-                }
-                
-                // Tenta enviar os dados
                 const response = await fetch(`${GOOGLE_FORM_URL}?usp=pp_url`, {
                     method: 'POST',
                     body: formData,
@@ -484,16 +418,13 @@
                 });
 
                 if (type === 'email') {
-                    // Salva dados no localStorage após envio bem-sucedido
                     saveUserData(data[ENTRY_ID_NOME], data[ENTRY_ID_EMAIL]); 
                     showModal("Cadastro Concluído!", "E-mail cadastrado com sucesso! Em breve você receberá seu cupom e as novidades.");
                 } else if (type === 'suggestion') {
-                    // Limpa campo de sugestão e esconde a caixa
                     otherInput.value = '';
                     otherBox.classList.add('hidden');
                     showModal("Sugestão Enviada!", "Obrigado pela sua sugestão! Ela foi registrada e será analisada pela nossa equipe.");
                 } else if (type === 'quiz') {
-                    // Não mostra modal, apenas confirma no console (envio discreto)
                     console.log("Resposta do Quiz enviada: " + data[ENTRY_ID_INTERESSE]);
                 }
 
@@ -503,27 +434,21 @@
             } finally {
                 button.disabled = false;
                 button.innerText = originalButtonText;
-                // Reinicia os estados de submissão
                 if (type === 'email') isSubmittingEmail = false;
                 if (type === 'suggestion') isSubmittingSuggestion = false;
             }
         }
         
-        // --- 1. ENVIO DO QUIZ (Quando seleciona uma opção principal) ---
         function submitQuizAnswer(answer) {
-             // Esta função é chamada automaticamente ao clicar nas opções do quiz (exceto 'Outro')
              const data = {
-                 [ENTRY_ID_INTERESSE]: answer,
-                 // Envia nome e e-mail apenas como informação de contexto para a resposta do Quiz
-                 [ENTRY_ID_NOME]: nameInput.value.trim() || "Resposta do Quiz (Nome Não Informado)", 
-                 [ENTRY_ID_EMAIL]: emailInput.value.trim() || "Nao_Fornecido@quiz.com"
+                 ['entry.' + ENTRY_ID_INTERESSE]: answer,
+                 ['entry.' + ENTRY_ID_NOME]: nameInput.value.trim() || "Resposta do Quiz (Nome Não Informado)", 
+                 ['entry.' + ENTRY_ID_EMAIL]: emailInput.value.trim() || "Nao_Fornecido@quiz.com"
              };
-             // Usamos o botão de e-mail apenas para o estado de "enviando", mas o envio é discreto (type: 'quiz')
              sendToForms(data, submitEmailButton, submitEmailButton.innerText, 'quiz');
         }
 
 
-        // --- 2. ENVIO DA SUGESTÃO (Botão 'Enviar Sugestão') ---
         async function submitSuggestion() {
             if (isSubmittingSuggestion) return;
             isSubmittingSuggestion = true;
@@ -537,15 +462,14 @@
             }
 
             const data = {
-                [ENTRY_ID_INTERESSE]: "Sugestão de Produto: " + suggestionValue,
-                [ENTRY_ID_NOME]: nameInput.value.trim() || "Sugestão (Nome Não Informado)", 
-                [ENTRY_ID_EMAIL]: emailInput.value.trim() || "Nao_Fornecido@sugestao.com" 
+                ['entry.' + ENTRY_ID_INTERESSE]: "Sugestão de Produto: " + suggestionValue,
+                ['entry.' + ENTRY_ID_NOME]: nameInput.value.trim() || "Sugestão (Nome Não Informado)", 
+                ['entry.' + ENTRY_ID_EMAIL]: emailInput.value.trim() || "Nao_Fornecido@sugestao.com" 
             };
             
             await sendToForms(data, submitSuggestionButton, "ENVIAR SUGESTÃO", 'suggestion');
         }
 
-        // --- 3. ENVIO DO E-MAIL (Botão 'Quero receber as novidades!') ---
         async function submitEmail() {
             if (isSubmittingEmail) return;
             isSubmittingEmail = true;
@@ -555,23 +479,20 @@
 
             if (!emailValue || !isValidEmail(emailValue)) {
                 isSubmittingEmail = false;
-                // ESTE MODAL DE VALIDAÇÃO APARECE SE O E-MAIL ESTIVER INCORRETO
                 showModal("E-mail Inválido", "Por favor, digite um e-mail válido para receber o cupom.");
                 return;
             }
             
-            // O interesse do e-mail é apenas "Quero receber novidades e cupom"
             const data = {
-                [ENTRY_ID_INTERESSE]: "Interesse em Novidades e Cupom", 
-                [ENTRY_ID_NOME]: nameValue || "Não Informado",
-                [ENTRY_ID_EMAIL]: emailValue
+                ['entry.' + ENTRY_ID_INTERESSE]: "Interesse em Novidades e Cupom", 
+                ['entry.' + ENTRY_ID_NOME]: nameValue || "Não Informado",
+                ['entry.' + ENTRY_ID_EMAIL]: emailValue
             };
 
             await sendToForms(data, submitEmailButton, "QUERO RECEBER AS NOVIDADES!", 'email');
         }
 
 
-        // --- LÓGICA DAS CURIOSIDADES (Mantida) ---
         const curiosities = [
             "Você sabia que o pneu foi inventado antes do carro? Eles eram usados em bicicletas no final do século 19.",
             "O motor Wankel, usado em alguns carros Mazda, possui um design rotativo que elimina a necessidade de pistões e bielas.",
