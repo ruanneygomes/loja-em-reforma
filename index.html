@@ -167,8 +167,8 @@
 
         .curiosity {
             background: #151515; 
-            margin: 15px 0 10px 0; 
-            padding: 15px; 
+            margin: 10px 0 5px 0; 
+            padding: 10px 15px; 
             border-radius: 8px;
             font-size: 14px;
             line-height: 1.4;
@@ -177,7 +177,7 @@
         }
         .curiosity strong {
              display: block; 
-             margin-bottom: 5px;
+             margin-bottom: 0px; /* Alterado para 0px para colar o texto */
         }
 
         .novidades {
@@ -300,7 +300,7 @@
         </div>
 
         <div class="curiosity">
-            <strong>Curiosidade do dia:</strong><br>
+            <strong>Curiosidade do dia:</strong>
             <span id="curiosityText"></span>
         </div>
 
@@ -331,19 +331,19 @@
 
     <script>
         // ------------------------------------------------------------------------------------------------
-        // ATENÇÃO: VOCÊ PRECISA PREENCHER AS CONSTANTES ABAIXO!
+        // 🚨🚨🚨 SEÇÃO DE CONFIGURAÇÃO CRÍTICA DO GOOGLE FORMS 🚨🚨🚨
         // ------------------------------------------------------------------------------------------------
         
-        // 1. Link de Envio (Action URL do formulário, OBRIGATÓRIO)
-        // EX: 'https://docs.google.com/forms/d/e/1FAIpQLSfB0vE_iN6G_n1eQz8S_l2/formResponse'
+        // 1. Link de Envio (Action URL do formulário) - JÁ ESTÁ CORRETO
         const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfywwXvO76YA3iai6JYHZ487sATVtCusnxV50tlhgXva5L8pQ/formResponse";
 
         // 2. IDs dos campos (Entry IDs)
-        // O campo de interesse/sugestão será usado para o quiz E para a sugestão de "Outro"
-        // Você encontra o Entry ID inspecionando o código-fonte do seu formulário.
-        const ENTRY_ID_INTERESSE = "<<ENTRY_ID_INTERESSE>>"; // Ex: entry.2005620554
-        const ENTRY_ID_NOME = "<<ENTRY_ID_NOME>>";           // Ex: entry.1000000
-        const ENTRY_ID_EMAIL = "<<ENTRY_ID_EMAIL>>";         // Ex: entry.1000000
+        // VOCÊ PRECISA SUBSTITUIR OS PLACEHOLDERS ABAIXO PELOS CÓDIGOS REAIS DO SEU FORMS!
+        // Ex: entry.2005620554 (O entry.xxxxxxxxxx)
+        
+        const ENTRY_ID_INTERESSE = "<<ENTRY_ID_INTERESSE>>"; // Substitua aqui! (Pergunta 1 do Quiz)
+        const ENTRY_ID_NOME = "<<ENTRY_ID_NOME>>";           // Substitua aqui! (Campo Nome)
+        const ENTRY_ID_EMAIL = "<<ENTRY_ID_EMAIL>>";         // Substitua aqui! (Campo E-mail)
         
         // ------------------------------------------------------------------------------------------------
         
@@ -443,17 +443,23 @@
             try {
                 // Monta o FormData com os dados fornecidos
                 const formData = new FormData();
+                let hasPlaceholder = false;
+
                 for (const key in data) {
-                    // Verifica se o ENTRY ID é o placeholder, se for, pula para evitar erros na URL
-                    if (!key.includes("<<ENTRY_ID")) {
-                        formData.append(key, data[key]);
-                    } else {
-                        console.warn(`Aviso: Pulando o campo ${key} pois o ENTRY ID não foi preenchido. O envio de dados NÃO está funcionando.`);
-                        showModal("Atenção: Entry ID Faltando", `O campo ${key} não foi configurado. O envio NÃO funcionará corretamente. Por favor, preencha os ENTRY IDs no código.`);
-                        button.disabled = false;
-                        button.innerText = originalButtonText;
-                        return;
+                    // Verifica se o ENTRY ID é o placeholder. Se for, interrompe e avisa.
+                    if (key.includes("<<ENTRY_ID")) {
+                        hasPlaceholder = true;
+                        break;
                     }
+                    formData.append(key, data[key]);
+                }
+                
+                if (hasPlaceholder) {
+                    console.warn(`Aviso: Um ENTRY ID não foi preenchido. O envio de dados NÃO está funcionando.`);
+                    showModal("Atenção: Entry ID Faltando", `Um ou mais campos de ID de entrada (ENTRY_ID) não foram configurados. O envio NÃO funcionará corretamente. Por favor, preencha todos os ENTRY IDs na seção de CONFIGURAÇÃO do código.`);
+                    button.disabled = false;
+                    button.innerText = originalButtonText;
+                    return;
                 }
                 
                 const response = await fetch(`${GOOGLE_FORM_URL}?usp=pp_url`, {
