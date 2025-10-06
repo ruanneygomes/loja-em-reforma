@@ -26,7 +26,7 @@
             text-align: center;
             /* EFEITO DE FUNDO DE FIBRA DE CARBONO */
             background-color: #1a1a1a;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><rect width="10" height="10" fill="none"/><path d="M0 0h5v5H0zM5 5h5v5H5z" fill="%23222" opacity="0.3"/></svg>');
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><rect width="10" height="10" fill="none"/><path d="M0 0h5v5H0zM5 5h5v5H5z" fill="%22%23222%22 opacity="0.3"/></svg>');
         }
         header {
             background: #222;
@@ -162,6 +162,13 @@
             font-size: 17px;
             font-weight: 600;
         }
+        .submit-notice {
+            font-size: 12px;
+            color: #ccc;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            display: block;
+        }
         footer {
             padding: 10px;
             background: #000;
@@ -260,6 +267,10 @@
 
         <div id="otherBox" class="hidden">
             <input type="text" id="otherInput" placeholder="Digite sua sugestão">
+            <!-- Aviso para o usuário continuar -->
+            <span class="submit-notice">
+                Preencha seu e-mail abaixo e clique no botão vermelho para enviar sua sugestão.
+            </span>
         </div>
 
         <div class="curiosity">
@@ -274,7 +285,7 @@
         <input type="text" id="nameInput" placeholder="Seu nome (opcional)">
         <input type="email" id="emailInput" placeholder="Seu e-mail (obrigatório)">
         <br>
-        <button id="submitButton" onclick="submitQuiz()">Quero as novidades!</button>
+        <button id="submitButton" onclick="submitQuiz()">Quero receber as novidades!</button>
     </section>
 
     <footer>
@@ -344,17 +355,25 @@
             if (isSubmitting) return; // Se já estiver enviando, ignora
 
             const otherValue = document.getElementById('otherInput').value.trim();
+            const isOtherVisible = !document.getElementById('otherBox').classList.contains('hidden');
             const emailValue = document.getElementById('emailInput').value.trim();
             const nameValue = document.getElementById('nameInput').value.trim();
 
             let finalAnswer = selectedOption;
             if (otherValue) finalAnswer = "Outro: " + otherValue;
 
-            if (!finalAnswer) {
-                showModal("Atenção", "Por favor, selecione uma opção ou digite sua sugestão."); 
+            // VALIDAÇÃO PRINCIPAL: Verifica se alguma opção foi escolhida OU se algo foi digitado no "Outro"
+            if (!finalAnswer && isOtherVisible && otherValue) {
+                // Se "Outro" está visível mas está vazio
+                showModal("Atenção", "Por favor, digite sua sugestão no campo 'Outro' ou selecione uma opção acima."); 
                 return;
+            } else if (!finalAnswer && !otherValue) {
+                 // Se nada foi selecionado e nada foi digitado
+                 showModal("Atenção", "Por favor, selecione uma opção ou digite sua sugestão."); 
+                 return;
             }
             
+            // VALIDAÇÃO DE E-MAIL
             if (!emailValue || !isValidEmail(emailValue)) {
                 showModal("E-mail Inválido", "Por favor, digite um e-mail válido.");
                 return;
@@ -391,6 +410,7 @@
                 document.getElementById('nameInput').value = '';
                 document.getElementById('otherInput').value = '';
                 options.forEach(opt => opt.classList.remove('selected'));
+                document.getElementById('otherBox').classList.add('hidden'); // Esconde o campo "Outro"
                 selectedOption = "";
 
             } catch (error) {
