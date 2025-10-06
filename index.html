@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja do Meu Carro - Em Reforma</title>
 
+    <!-- METADADOS SEO/OPENGRAPH (Adicionado para melhor compartilhamento) -->
+    <meta name="description" content="Nova loja em construção! Participe do nosso quiz e ganhe um cupom de lançamento. Acelere uma nova fase com a Loja do Meu Carro.">
+    
+    <!-- OpenGraph Tags (Para compartilhamento em redes sociais) -->
+    <meta property="og:title" content="Loja do Meu Carro | Em Construção e com Cupom!">
+    <meta property="og:description" content="Deixe sua opinião sobre o que você mais procura e garanta um cupom exclusivo para o lançamento da nova loja.">
+    <!-- ATENÇÃO: Substitua o 'URL_DA_SUA_IMAGEM' por um link público do logo para que ele apareça ao compartilhar. -->
+    <meta property="og:image" content="https://placehold.co/1200x630/111/fff?text=LOGO+LOJA+DO+MEU+CARRO">
+    <meta property="og:url" content="https://lojadomeucarro.com.br">
+    <meta property="og:type" content="website">
+
     <!-- Ícone da aba -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚗</text></svg>">
     
@@ -26,7 +37,7 @@
             text-align: center;
             /* EFEITO DE FUNDO DE FIBRA DE CARBONO */
             background-color: #1a1a1a;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><rect width="10" height="10" fill="none"/><path d="M0 0h5v5H0zM5 5h5v5H5z" fill="%22%23222%22 opacity="0.3"/></svg>');
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><rect width="10" height="10" fill="none"/><path d="M0 0h5v5H0zM5 5h5v5H5z" fill="%23222" opacity="0.3"/></svg>');
         }
         header {
             background: #222;
@@ -69,7 +80,7 @@
             font-weight: 600;
         }
 
-        /* Botões do Quiz */
+        /* Botões do Quiz (Opções) */
         .option {
             padding: 12px; 
             margin: 10px 0; 
@@ -79,7 +90,7 @@
             color: #eee;
             background: #2a2a2a; 
             border: 1px solid #444; 
-            font-size: 15px; 
+            font-size: 15px; /* Tamanho base dos botões de opção */
             text-align: center; 
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
@@ -117,43 +128,62 @@
              box-shadow: 0 0 5px rgba(217, 30, 24, 0.5);
         }
         
-        /* Botão Principal */
-        button {
+        /* Botão Principal (Envio de Sugestão e E-mail) */
+        .main-button {
             background: var(--primary-red);
             color: #fff;
-            padding: 12px 25px; 
+            padding: 10px 25px; 
             border: none;
             border-radius: 8px;
             cursor: pointer;
             margin-top: 15px; 
-            font-size: 18px;
+            font-size: 16px; 
             font-weight: bold;
             transition: all 0.25s ease-out; 
             box-shadow: 0 4px 15px rgba(217, 30, 24, 0.4);
             width: 90%; 
         }
-        button:hover:not(:disabled) {
+        .main-button:hover:not(:disabled) {
             background: var(--dark-red);
             transform: translateY(-2px) scale(1.01);
             box-shadow: 0 6px 20px rgba(217, 30, 24, 0.6);
         }
-        button:disabled {
+        .main-button:disabled {
             background: #444;
             cursor: not-allowed;
             opacity: 0.7;
             transform: none;
             box-shadow: none;
         }
+        
+        /* Botão de Sugestão */
+        #submitSuggestionButton {
+            font-size: 16px;
+            padding: 10px 20px;
+            width: 88%; 
+            margin-top: 10px;
+        }
+
 
         .curiosity {
             background: #151515; 
-            margin: 15px 0 15px 0; 
+            margin: 15px 0 10px 0; 
             padding: 15px; 
             border-radius: 8px;
             font-size: 14px;
             line-height: 1.4;
             border-left: 4px solid var(--primary-red); 
-            text-align: left;
+            text-align: center; 
+        }
+        .curiosity strong {
+             display: block; 
+             margin-bottom: 5px;
+        }
+
+        .novidades {
+            border-top: 1px solid #333; /* Linha divisória */
+            padding-top: 15px;
+            margin-top: 25px;
         }
         .novidades h3 {
             color: var(--primary-red);
@@ -161,13 +191,6 @@
             margin-bottom: 5px;
             font-size: 17px;
             font-weight: 600;
-        }
-        .submit-notice {
-            font-size: 12px;
-            color: #ccc;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            display: block;
         }
         footer {
             padding: 10px;
@@ -232,8 +255,11 @@
             .option {
                 font-size: 14px;
             }
-            button {
+            .main-button {
                 font-size: 16px;
+                width: 100%;
+            }
+            #submitSuggestionButton {
                 width: 100%;
             }
             input[type=text], input[type=email] {
@@ -245,7 +271,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="loadSavedData()"> <!-- Chamada adicionada para carregar os dados salvos -->
 
     <header>
         <div class="logo-container">
@@ -265,12 +291,12 @@
             <div class="option" onclick="showOther()">Outro...</div>
         </div>
 
+        <!-- Seção de Sugestão (Outro...) -->
         <div id="otherBox" class="hidden">
-            <input type="text" id="otherInput" placeholder="Digite sua sugestão">
-            <!-- Aviso para o usuário continuar -->
-            <span class="submit-notice">
-                Preencha seu e-mail abaixo e clique no botão vermelho para enviar sua sugestão.
-            </span>
+            <input type="text" id="otherInput" placeholder="Digite sua sugestão de produto/categoria">
+            <button id="submitSuggestionButton" class="main-button" onclick="submitSuggestion()">
+                ENVIAR SUGESTÃO
+            </button>
         </div>
 
         <div class="curiosity">
@@ -278,6 +304,7 @@
             <span id="curiosityText"></span>
         </div>
 
+        <!-- Seção de Novidades e E-mail -->
         <div class="novidades">
             <h3>Quer receber novidades e um cupom de lançamento?</h3>
         </div>
@@ -285,7 +312,7 @@
         <input type="text" id="nameInput" placeholder="Seu nome (opcional)">
         <input type="email" id="emailInput" placeholder="Seu e-mail (obrigatório)">
         <br>
-        <button id="submitButton" onclick="submitQuiz()">Quero receber as novidades!</button>
+        <button id="submitEmailButton" class="main-button" onclick="submitEmail()">QUERO RECEBER AS NOVIDADES!</button>
     </section>
 
     <footer>
@@ -303,22 +330,37 @@
     <!-- FIM DO MODAL -->
 
     <script>
-        // CONFIGURAÇÕES DO GOOGLE FORMS (MUDAR AQUI)
         // ------------------------------------------------------------------------------------------------
-        // 1. Link de Envio (Action URL do formulário)
-        const GOOGLE_FORM_URL = "<<PREENCHA COM SEU LINK DE ENVIO DO FORMS>>";
+        // ATENÇÃO: VOCÊ PRECISA PREENCHER AS CONSTANTES ABAIXO!
+        // ------------------------------------------------------------------------------------------------
+        
+        // 1. Link de Envio (Action URL do formulário, OBRIGATÓRIO)
+        // EX: 'https://docs.google.com/forms/d/e/1FAIpQLSfB0vE_iN6G_n1eQz8S_l2/formResponse'
+        const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfywwXvO76YA3iai6JYHZ487sATVtCusnxV50tlhgXva5L8pQ/formResponse";
 
         // 2. IDs dos campos (Entry IDs)
-        // Certifique-se que as variáveis abaixo correspondem aos campos de INTERESSE, NOME e EMAIL no seu Forms
+        // O campo de interesse/sugestão será usado para o quiz E para a sugestão de "Outro"
+        // Você encontra o Entry ID inspecionando o código-fonte do seu formulário.
         const ENTRY_ID_INTERESSE = "<<ENTRY_ID_INTERESSE>>"; // Ex: entry.2005620554
         const ENTRY_ID_NOME = "<<ENTRY_ID_NOME>>";           // Ex: entry.1000000
         const ENTRY_ID_EMAIL = "<<ENTRY_ID_EMAIL>>";         // Ex: entry.1000000
+        
         // ------------------------------------------------------------------------------------------------
         
         let selectedOption = "";
-        let isSubmitting = false; // Estado para evitar cliques múltiplos
+        let isSubmittingEmail = false; 
+        let isSubmittingSuggestion = false;
+        
         const options = document.querySelectorAll('.option[data-option]');
-        const submitButton = document.getElementById('submitButton');
+        const submitEmailButton = document.getElementById('submitEmailButton');
+        const submitSuggestionButton = document.getElementById('submitSuggestionButton');
+        const otherInput = document.getElementById('otherInput');
+        const otherBox = document.getElementById('otherBox');
+        const nameInput = document.getElementById('nameInput');
+        const emailInput = document.getElementById('emailInput');
+
+
+        // --- FUNÇÕES DE UTILIDADE ---
 
         function showModal(title, message) {
             document.getElementById('modalTitle').innerText = title;
@@ -334,95 +376,180 @@
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,4}$/;
             return emailRegex.test(email);
         }
+        
+        /**
+         * Salva o nome e e-mail no localStorage para pré-preenchimento futuro.
+         * @param {string} name 
+         * @param {string} email 
+         */
+        function saveUserData(name, email) {
+            if (name) localStorage.setItem('user_name', name);
+            if (email) localStorage.setItem('user_email', email);
+        }
 
+        /**
+         * Carrega os dados salvos do localStorage ao carregar a página (chamado no body onload).
+         */
+        function loadSavedData() {
+            const savedName = localStorage.getItem('user_name');
+            const savedEmail = localStorage.getItem('user_email');
+
+            if (savedName) nameInput.value = savedName;
+            if (savedEmail) emailInput.value = savedEmail;
+        }
+
+        // --- LÓGICA DE INTERAÇÃO ---
+
+        // Lógica de seleção dos botões do Quiz
         options.forEach(option => {
             option.addEventListener('click', function() {
                 options.forEach(opt => opt.classList.remove('selected'));
                 this.classList.add('selected');
                 selectedOption = this.getAttribute('data-option');
-                document.getElementById('otherBox').classList.add('hidden');
-                document.getElementById('otherInput').value = '';
+                
+                // 1. Esconde a caixa "Outro" se uma opção principal for selecionada
+                otherBox.classList.add('hidden');
+                otherInput.value = '';
+                
+                // 2. Envia a resposta do quiz automaticamente (somente se não for a opção "Outro")
+                submitQuizAnswer(selectedOption, ""); 
             });
         });
 
+        // Lógica para mostrar o campo "Outro"
         function showOther() {
             options.forEach(opt => opt.classList.remove('selected'));
-            selectedOption = "";
-            document.getElementById('otherBox').classList.remove('hidden');
+            selectedOption = ""; // Desmarca qualquer opção principal
+            otherBox.classList.remove('hidden'); // Mostra a caixa de texto e o botão de sugestão
         }
 
-        async function submitQuiz() {
-            if (isSubmitting) return; // Se já estiver enviando, ignora
+        // --- FUNÇÃO DE ENVIO GERAL PARA O FORMS ---
+        async function sendToForms(data, button, originalText, type) {
+            if (button.disabled) return; 
 
-            const otherValue = document.getElementById('otherInput').value.trim();
-            const isOtherVisible = !document.getElementById('otherBox').classList.contains('hidden');
-            const emailValue = document.getElementById('emailInput').value.trim();
-            const nameValue = document.getElementById('nameInput').value.trim();
-
-            let finalAnswer = selectedOption;
-            if (otherValue) finalAnswer = "Outro: " + otherValue;
-
-            // VALIDAÇÃO PRINCIPAL: Verifica se alguma opção foi escolhida OU se algo foi digitado no "Outro"
-            if (!finalAnswer && isOtherVisible && otherValue) {
-                // Se "Outro" está visível mas está vazio
-                showModal("Atenção", "Por favor, digite sua sugestão no campo 'Outro' ou selecione uma opção acima."); 
-                return;
-            } else if (!finalAnswer && !otherValue) {
-                 // Se nada foi selecionado e nada foi digitado
-                 showModal("Atenção", "Por favor, selecione uma opção ou digite sua sugestão."); 
+            // VERIFICAÇÃO CRÍTICA PARA O ERRO
+            if (!GOOGLE_FORM_URL || !GOOGLE_FORM_URL.startsWith('https://')) {
+                 console.error("Erro: O GOOGLE_FORM_URL não foi preenchido corretamente.");
+                 showModal("Erro de Configuração", "O link de envio do Google Forms (GOOGLE_FORM_URL) não foi configurado. Por favor, preencha as constantes na seção <script> para que o envio funcione. Consulte o guia ao lado.");
                  return;
             }
+
+
+            const originalButtonText = button.innerText;
             
-            // VALIDAÇÃO DE E-MAIL
-            if (!emailValue || !isValidEmail(emailValue)) {
-                showModal("E-mail Inválido", "Por favor, digite um e-mail válido.");
-                return;
-            }
+            button.disabled = true;
+            button.innerText = "Enviando...";
 
-            // 1. Prepara os dados para o Forms
-            const formData = new FormData();
-            formData.append(ENTRY_ID_INTERESSE, finalAnswer);
-            formData.append(ENTRY_ID_NOME, nameValue);
-            formData.append(ENTRY_ID_EMAIL, emailValue);
-
-            // 2. Trava o botão e muda o texto
-            isSubmitting = true;
-            submitButton.disabled = true;
-            const originalButtonText = submitButton.innerText;
-            submitButton.innerText = "Enviando...";
-
-            // 3. Envia os dados de forma assíncrona (AJAX)
             try {
-                // Adicionamos ?usp=pp_url para garantir a URL correta do Google Forms
+                // Monta o FormData com os dados fornecidos
+                const formData = new FormData();
+                for (const key in data) {
+                    // Verifica se o ENTRY ID é o placeholder, se for, pula para evitar erros na URL
+                    if (!key.includes("<<ENTRY_ID")) {
+                        formData.append(key, data[key]);
+                    } else {
+                        console.warn(`Aviso: Pulando o campo ${key} pois o ENTRY ID não foi preenchido. O envio de dados NÃO está funcionando.`);
+                        showModal("Atenção: Entry ID Faltando", `O campo ${key} não foi configurado. O envio NÃO funcionará corretamente. Por favor, preencha os ENTRY IDs no código.`);
+                        button.disabled = false;
+                        button.innerText = originalButtonText;
+                        return;
+                    }
+                }
+                
                 const response = await fetch(`${GOOGLE_FORM_URL}?usp=pp_url`, {
                     method: 'POST',
                     body: formData,
-                    mode: 'no-cors' // Necessário para o Google Forms evitar bloqueio CORS
+                    mode: 'no-cors' 
                 });
 
-                // Como usamos 'no-cors', não podemos verificar a resposta real, 
-                // mas se não houver erro de rede, presumimos sucesso.
-
-                showModal("Cadastro Confirmado!", `Obrigado, ${nameValue || 'futuro cliente'}! Você será notificado por e-mail em breve.`);
-                
-                // 4. Limpa o formulário após o envio
-                document.getElementById('emailInput').value = '';
-                document.getElementById('nameInput').value = '';
-                document.getElementById('otherInput').value = '';
-                options.forEach(opt => opt.classList.remove('selected'));
-                document.getElementById('otherBox').classList.add('hidden'); // Esconde o campo "Outro"
-                selectedOption = "";
+                if (type === 'email') {
+                    // Salva dados no localStorage após envio bem-sucedido
+                    saveUserData(data[ENTRY_ID_NOME], data[ENTRY_ID_EMAIL]); 
+                    
+                    // Não limpa os campos, apenas confirma o sucesso
+                    showModal("Cadastro Concluído!", "E-mail cadastrado com sucesso! Em breve você receberá seu cupom e as novidades.");
+                } else if (type === 'suggestion') {
+                    // Limpa campo de sugestão e esconde a caixa
+                    otherInput.value = '';
+                    otherBox.classList.add('hidden');
+                    showModal("Sugestão Enviada!", "Obrigado pela sua sugestão! Ela foi registrada e será analisada pela nossa equipe.");
+                } else if (type === 'quiz') {
+                    // Não mostra modal, apenas confirma no console (envio discreto)
+                    console.log("Resposta do Quiz enviada: " + data[ENTRY_ID_INTERESSE]);
+                }
 
             } catch (error) {
                 console.error('Erro ao enviar para o Forms:', error);
-                showModal("Erro de Envio", "Ocorreu um erro ao enviar seus dados. Tente novamente mais tarde.");
+                // Captura o erro geral do fetch, que pode ser o de URL inválida
+                showModal("Erro de Envio", "Ocorreu um erro ao enviar seus dados. Verifique a URL do Google Forms e tente novamente. (Detalhe: " + error.message + ")");
             } finally {
-                // 5. Destrava o botão e restaura o texto
-                isSubmitting = false;
-                submitButton.disabled = false;
-                submitButton.innerText = originalButtonText;
+                button.disabled = false;
+                button.innerText = originalButtonText;
             }
         }
+        
+        // --- 1. ENVIO DO QUIZ (Quando seleciona uma opção principal) ---
+        function submitQuizAnswer(answer) {
+             // Esta função é chamada automaticamente ao clicar nas opções do quiz (exceto 'Outro')
+             const data = {
+                [ENTRY_ID_INTERESSE]: answer,
+                [ENTRY_ID_NOME]: nameInput.value.trim() || "Resposta do Quiz (Nome Não Informado)", 
+                [ENTRY_ID_EMAIL]: emailInput.value.trim() || "Nao_Fornecido@quiz.com"
+            };
+            // Usamos o botão de e-mail apenas para o estado de "enviando", mas o envio é discreto (type: 'quiz')
+            sendToForms(data, submitEmailButton, submitEmailButton.innerText, 'quiz');
+        }
+
+
+        // --- 2. ENVIO DA SUGESTÃO (Novo botão 'Enviar Sugestão') ---
+        async function submitSuggestion() {
+            if (isSubmittingSuggestion) return;
+            isSubmittingSuggestion = true;
+
+            const suggestionValue = otherInput.value.trim();
+
+            if (!suggestionValue) {
+                isSubmittingSuggestion = false;
+                showModal("Atenção", "Por favor, digite sua sugestão para enviá-la."); 
+                return;
+            }
+
+            const data = {
+                [ENTRY_ID_INTERESSE]: "Sugestão de Produto: " + suggestionValue,
+                [ENTRY_ID_NOME]: nameInput.value.trim() || "Sugestão (Nome Não Informado)", 
+                [ENTRY_ID_EMAIL]: emailInput.value.trim() || "Nao_Fornecido@sugestao.com" 
+            };
+            
+            // O botão de sugestão agora usa o padrão vermelho
+            await sendToForms(data, submitSuggestionButton, "ENVIAR SUGESTÃO", 'suggestion');
+            isSubmittingSuggestion = false;
+        }
+
+        // --- 3. ENVIO DO E-MAIL (Botão 'Quero receber as novidades!') ---
+        async function submitEmail() {
+            if (isSubmittingEmail) return;
+            isSubmittingEmail = true;
+
+            const emailValue = emailInput.value.trim();
+            const nameValue = nameInput.value.trim();
+
+            if (!emailValue || !isValidEmail(emailValue)) {
+                isSubmittingEmail = false;
+                showModal("E-mail Inválido", "Por favor, digite um e-mail válido para receber o cupom.");
+                return;
+            }
+            
+            // O interesse do e-mail é apenas "Quero receber novidades e cupom"
+            const data = {
+                [ENTRY_ID_INTERESSE]: "Interesse em Novidades e Cupom", 
+                [ENTRY_ID_NOME]: nameValue || "Não Informado",
+                [ENTRY_ID_EMAIL]: emailValue
+            };
+
+            await sendToForms(data, submitEmailButton, "QUERO RECEBER AS NOVIDADES!", 'email');
+            isSubmittingEmail = false;
+        }
+
 
         // --- LÓGICA DAS CURIOSIDADES ---
         const curiosities = [
