@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja do Meu Carro - Em Reforma</title>
 
-    <!-- Adicionando Favicon (Ícone na aba do navegador) -->
+    <!-- Ícone da aba -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚗</text></svg>">
     
     <style>
-        /* Cores de Destaque */
+        /* Cores Base */
         :root {
-            --primary-red: #d91e18; /* Vermelho principal */
-            --dark-red: #a81713;    /* Vermelho escuro para hover/selected */
+            --primary-red: #d91e18;
+            --dark-red: #a81713;
             --background-dark: #111;
             --card-bg: #1c1c1c;
         }
@@ -24,11 +24,9 @@
             background: var(--background-dark);
             color: #eee;
             text-align: center;
-            
             /* EFEITO DE FUNDO DE FIBRA DE CARBONO */
             background-color: #1a1a1a;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><rect width="10" height="10" fill="none"/><path d="M0 0h5v5H0zM5 5h5v5H5z" fill="%23222" opacity="0.3"/></svg>');
-            /* Fim do EFEITO DE FUNDO */
         }
         header {
             background: #222;
@@ -37,7 +35,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
         }
         
-        /* Estilo para a Logo */
+        /* Logo */
         .logo-container {
             margin: 5px auto 10px;
         }
@@ -46,7 +44,7 @@
             height: auto;
             display: block;
             margin: 0 auto;
-            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.6)); /* Sombra da Logo mais viva */
+            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.6));
         }
         header p {
             margin-top: 5px;
@@ -62,7 +60,7 @@
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-            border: 1px solid #333; /* Borda sutil */
+            border: 1px solid #333;
         }
         .quiz h2 {
             font-size: 20px; 
@@ -71,13 +69,13 @@
             font-weight: 600;
         }
 
-        /* ESTILO NOVO PARA BOTÕES MODERNOS E FLUIDOS */
+        /* Botões do Quiz */
         .option {
             padding: 12px; 
             margin: 10px 0; 
             border-radius: 10px; 
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transição FLUIDA: ease-in-out */
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
             color: #eee;
             background: #2a2a2a; 
             border: 1px solid #444; 
@@ -85,21 +83,19 @@
             text-align: center; 
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
-        /* EFEITO DE ESCALA (ZOOM) E REFLEXO (GLOW MAIS INTENSO) AO PASSAR O MOUSE */
         .option:hover {
             background: #2f2f2f; 
             border-color: var(--primary-red);
-            box-shadow: 0 0 15px rgba(217, 30, 24, 0.5), 0 4px 8px rgba(0, 0, 0, 0.5); /* GLOW + Sombra mais profunda */
-            transform: scale(1.03); /* Leve ZOOM de 3% */
+            box-shadow: 0 0 15px rgba(217, 30, 24, 0.5), 0 4px 8px rgba(0, 0, 0, 0.5); 
+            transform: scale(1.03); 
         }
         .option.selected {
             background: var(--dark-red);
             color: #fff;
             border: 1px solid var(--primary-red);
-            box-shadow: 0 0 18px rgba(217, 30, 24, 0.7); /* Efeito de brilho ao selecionar */
+            box-shadow: 0 0 18px rgba(217, 30, 24, 0.7); 
             transform: scale(1.02); 
         }
-        /* Fim do Estilo Novo para Botões */
 
         .hidden {
             display: none;
@@ -121,7 +117,7 @@
              box-shadow: 0 0 5px rgba(217, 30, 24, 0.5);
         }
         
-        /* Estilo para Botão Principal (Quero as novidades) */
+        /* Botão Principal */
         button {
             background: var(--primary-red);
             color: #fff;
@@ -132,16 +128,22 @@
             margin-top: 15px; 
             font-size: 18px;
             font-weight: bold;
-            transition: all 0.25s ease-out; /* Transição mais suave para o botão */
+            transition: all 0.25s ease-out; 
             box-shadow: 0 4px 15px rgba(217, 30, 24, 0.4);
             width: 90%; 
         }
-        button:hover {
+        button:hover:not(:disabled) {
             background: var(--dark-red);
             transform: translateY(-2px) scale(1.01);
             box-shadow: 0 6px 20px rgba(217, 30, 24, 0.6);
         }
-        /* Fim do Estilo Botão Principal */
+        button:disabled {
+            background: #444;
+            cursor: not-allowed;
+            opacity: 0.7;
+            transform: none;
+            box-shadow: none;
+        }
 
         .curiosity {
             background: #151515; 
@@ -167,7 +169,48 @@
             font-size: 12px;
         }
 
-        /* MEDIA QUERIES: RESPONSIVIDADE PARA CELULARES */
+        /* Modal de Confirmação */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 350px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(217, 30, 24, 0.7);
+        }
+        .modal-content h4 {
+            color: var(--primary-red);
+            margin-top: 0;
+        }
+        .modal-content p {
+            margin-bottom: 20px;
+        }
+        .modal-content button {
+            width: 100px;
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        /* MEDIA QUERIES */
         @media (max-width: 600px) {
             .quiz {
                 margin: 10px auto;
@@ -199,11 +242,9 @@
 
     <header>
         <div class="logo-container">
-            <!-- CAMINHO DA LOGO: O nome do arquivo no GitHub deve ser 'logo-web-loja-do-meu-carro.png' -->
-            <img src="logo-web-loja-do-meu-carro.png" alt="Logo Loja do Meu Carro" 
+            <img src="logo web loja do meu carro.png" alt="Logo Loja do Meu Carro" 
                  onerror="this.onerror=null; this.src='https://placehold.co/220x80/111/fff?text=LOJA+DO+MEU+CARRO'">
         </div>
-        <!-- TEXTO: Opção 3 - Curta e Direta -->
         <p>Nova loja em construção. Deixe sua opinião e garanta um cupom de lançamento!</p>
     </header>
 
@@ -233,25 +274,56 @@
         <input type="text" id="nameInput" placeholder="Seu nome (opcional)">
         <input type="email" id="emailInput" placeholder="Seu e-mail (obrigatório)">
         <br>
-        <button onclick="submitQuiz()">Quero as novidades!</button>
+        <button id="submitButton" onclick="submitQuiz()">Quero as novidades!</button>
     </section>
 
     <footer>
         <p>Loja do Meu Carro © 2025 - Estamos acelerando uma nova fase</p>
     </footer>
 
-    <script>
-        let selectedOption = "";
-        const options = document.querySelectorAll('.option[data-option]');
+    <!-- MODAL DE CONFIRMAÇÃO (Substitui o alert) -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-content">
+            <h4 id="modalTitle"></h4>
+            <p id="modalMessage"></p>
+            <button onclick="hideModal()">Entendi</button>
+        </div>
+    </div>
+    <!-- FIM DO MODAL -->
 
-        // Função de Validação de E-mail (Regex)
+    <script>
+        // CONFIGURAÇÕES DO GOOGLE FORMS (MUDAR AQUI)
+        // ------------------------------------------------------------------------------------------------
+        // 1. Link de Envio (Action URL do formulário)
+        const GOOGLE_FORM_URL = "<<PREENCHA COM SEU LINK DE ENVIO DO FORMS>>";
+
+        // 2. IDs dos campos (Entry IDs)
+        // Certifique-se que as variáveis abaixo correspondem aos campos de INTERESSE, NOME e EMAIL no seu Forms
+        const ENTRY_ID_INTERESSE = "<<ENTRY_ID_INTERESSE>>"; // Ex: entry.2005620554
+        const ENTRY_ID_NOME = "<<ENTRY_ID_NOME>>";           // Ex: entry.1000000
+        const ENTRY_ID_EMAIL = "<<ENTRY_ID_EMAIL>>";         // Ex: entry.1000000
+        // ------------------------------------------------------------------------------------------------
+        
+        let selectedOption = "";
+        let isSubmitting = false; // Estado para evitar cliques múltiplos
+        const options = document.querySelectorAll('.option[data-option]');
+        const submitButton = document.getElementById('submitButton');
+
+        function showModal(title, message) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalMessage').innerText = message;
+            document.getElementById('modalOverlay').classList.add('visible');
+        }
+
+        function hideModal() {
+            document.getElementById('modalOverlay').classList.remove('visible');
+        }
+
         function isValidEmail(email) {
-            // Regex que verifica a estrutura básica:
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,4}$/;
             return emailRegex.test(email);
         }
 
-        // Lógica do Quiz
         options.forEach(option => {
             option.addEventListener('click', function() {
                 options.forEach(opt => opt.classList.remove('selected'));
@@ -268,7 +340,9 @@
             document.getElementById('otherBox').classList.remove('hidden');
         }
 
-        function submitQuiz() {
+        async function submitQuiz() {
+            if (isSubmitting) return; // Se já estiver enviando, ignora
+
             const otherValue = document.getElementById('otherInput').value.trim();
             const emailValue = document.getElementById('emailInput').value.trim();
             const nameValue = document.getElementById('nameInput').value.trim();
@@ -277,38 +351,61 @@
             if (otherValue) finalAnswer = "Outro: " + otherValue;
 
             if (!finalAnswer) {
-                alert("Por favor, selecione uma opção ou digite sua sugestão."); 
+                showModal("Atenção", "Por favor, selecione uma opção ou digite sua sugestão."); 
                 return;
             }
             
-            // Validação de E-mail
             if (!emailValue || !isValidEmail(emailValue)) {
-                alert("Por favor, digite um e-mail válido para receber as novidades (Ex: seuemail@dominio.com).");
+                showModal("E-mail Inválido", "Por favor, digite um e-mail válido.");
                 return;
             }
 
-            // AQUI OCORRERÁ O ENVIO DE DADOS REAIS QUANDO DECIDIRMOS PELA FERRAMENTA (Google Forms)
-            const data = {
-                nome: nameValue,
-                email: emailValue,
-                interesse: finalAnswer
-            };
+            // 1. Prepara os dados para o Forms
+            const formData = new FormData();
+            formData.append(ENTRY_ID_INTERESSE, finalAnswer);
+            formData.append(ENTRY_ID_NOME, nameValue);
+            formData.append(ENTRY_ID_EMAIL, emailValue);
 
-            console.log("Dados coletados (Pronto para enviar):", data);
-            
-            // Exemplo de sucesso (mantenha o alert por enquanto)
-            alert(`Obrigado, ${nameValue || 'futuro cliente'}! Você será notificado por e-mail em breve.`);
-            
-            document.getElementById('emailInput').value = '';
-            document.getElementById('nameInput').value = '';
-            document.getElementById('otherInput').value = '';
-            options.forEach(opt => opt.classList.remove('selected'));
-            selectedOption = "";
+            // 2. Trava o botão e muda o texto
+            isSubmitting = true;
+            submitButton.disabled = true;
+            const originalButtonText = submitButton.innerText;
+            submitButton.innerText = "Enviando...";
+
+            // 3. Envia os dados de forma assíncrona (AJAX)
+            try {
+                // Adicionamos ?usp=pp_url para garantir a URL correta do Google Forms
+                const response = await fetch(`${GOOGLE_FORM_URL}?usp=pp_url`, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors' // Necessário para o Google Forms evitar bloqueio CORS
+                });
+
+                // Como usamos 'no-cors', não podemos verificar a resposta real, 
+                // mas se não houver erro de rede, presumimos sucesso.
+
+                showModal("Cadastro Confirmado!", `Obrigado, ${nameValue || 'futuro cliente'}! Você será notificado por e-mail em breve.`);
+                
+                // 4. Limpa o formulário após o envio
+                document.getElementById('emailInput').value = '';
+                document.getElementById('nameInput').value = '';
+                document.getElementById('otherInput').value = '';
+                options.forEach(opt => opt.classList.remove('selected'));
+                selectedOption = "";
+
+            } catch (error) {
+                console.error('Erro ao enviar para o Forms:', error);
+                showModal("Erro de Envio", "Ocorreu um erro ao enviar seus dados. Tente novamente mais tarde.");
+            } finally {
+                // 5. Destrava o botão e restaura o texto
+                isSubmitting = false;
+                submitButton.disabled = false;
+                submitButton.innerText = originalButtonText;
+            }
         }
 
-        // --- ARRAY DE 30 CURIOSIDADES PARA AUTOMATIZAÇÃO DIÁRIA ---
+        // --- LÓGICA DAS CURIOSIDADES ---
         const curiosities = [
-            // Curiosidades de 1 a 10 (História e Mecânica)
             "Você sabia que o pneu foi inventado antes do carro? Eles eram usados em bicicletas no final do século 19.",
             "O motor Wankel, usado em alguns carros Mazda, possui um design rotativo que elimina a necessidade de pistões e bielas.",
             "O primeiro engarrafamento registrado na história aconteceu na cidade de Nova Iorque, em 1903.",
@@ -319,8 +416,6 @@
             "O primeiro carro com teto solar foi um Nash Ambassador em 1937.",
             "O 'chevrolet' foi nomeado em homenagem a Louis Chevrolet, um piloto de corrida suíço.",
             "A invenção do limpador de para-brisa é creditada a uma mulher, Mary Anderson, em 1903.",
-            
-            // Curiosidades de 11 a 20 (Manutenção e Segurança)
             "Manter os pneus calibrados corretamente pode economizar até 5% no consumo de combustível.",
             "O fluido de freio precisa ser trocado periodicamente, pois absorve umidade e perde eficácia com o tempo.",
             "Dirigir com o tanque na reserva força a bomba de combustível e pode reduzir sua vida útil.",
@@ -331,8 +426,6 @@
             "O cheiro doce de fluido de arrefecimento pode indicar um vazamento no sistema de radiador.",
             "Uma embreagem mal regulada não só causa dificuldade na troca de marchas, mas também desgasta o disco prematuramente.",
             "O filtro de cabine (ou filtro de ar-condicionado) deve ser trocado para evitar odores e melhorar a qualidade do ar interno.",
-            
-            // Curiosidades de 21 a 30 (Curiosidades e Performance)
             "O carro mais rápido do mundo (não de F1) pode acelerar de 0 a 100 km/h em menos de 2 segundos.",
             "A fibra de carbono é usada em carros de alta performance por ser 5 vezes mais forte e muito mais leve que o aço.",
             "O recorde de quilometragem percorrida por um único motorista em um carro é de mais de 4,8 milhões de km (Volvo P1800).",
@@ -345,23 +438,17 @@
             "Usar combustível de má qualidade pode carbonizar as válvulas e injetores, prejudicando a performance do motor."
         ];
 
-        // LÓGICA DE TROCA DE DICA: A CADA NOVO DIA (24h)
         function getCuriosityOfTheDay(curiosityList) {
             const today = new Date();
-            // 1. Calcula o número de dias desde 1º de Janeiro (Dia do Ano)
             const startOfYear = new Date(today.getFullYear(), 0, 0);
             const diff = today - startOfYear;
             const oneDay = 1000 * 60 * 60 * 24;
             const dayOfYear = Math.floor(diff / oneDay);
-
-            // 2. Garante que o índice não exceda o tamanho da lista (30 curiosidades)
-            // O operador % (resto da divisão) faz a lista se repetir
             const index = dayOfYear % curiosityList.length;
 
             return curiosityList[index];
         }
 
-        // Inicializa a curiosidade
         document.getElementById("curiosityText").innerHTML = getCuriosityOfTheDay(curiosities);
     </script>
 
