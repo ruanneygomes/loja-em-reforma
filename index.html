@@ -24,6 +24,11 @@
             background: var(--background-dark);
             color: #eee;
             text-align: center;
+            
+            /* EFEITO DE FUNDO DE FIBRA DE CARBONO */
+            background-color: #1a1a1a;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><rect width="10" height="10" fill="none"/><path d="M0 0h5v5H0zM5 5h5v5H5z" fill="%23222" opacity="0.3"/></svg>');
+            /* Fim do EFEITO DE FUNDO */
         }
         header {
             background: #222;
@@ -66,32 +71,32 @@
             font-weight: 600;
         }
 
-        /* ESTILO NOVO PARA BOTÕES MODERNOS */
+        /* ESTILO NOVO PARA BOTÕES MODERNOS E FLUIDOS */
         .option {
             padding: 12px; 
             margin: 10px 0; 
-            border-radius: 10px; /* Mais arredondado */
+            border-radius: 10px; 
             cursor: pointer;
-            transition: all 0.3s ease; /* Transição mais suave */
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transição FLUIDA: ease-in-out */
             color: #eee;
-            background: #2a2a2a; /* Fundo mais escuro para profundidade */
+            background: #2a2a2a; 
             border: 1px solid #444; 
             font-size: 15px; 
-            text-align: center; /* CENTRALIZADO CONFORME SOLICITADO */
+            text-align: center; 
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
-        /* EFEITO DE GLOW MAIS OPACO AO PASSAR O MOUSE */
+        /* EFEITO DE ESCALA (ZOOM) E REFLEXO (GLOW MAIS INTENSO) AO PASSAR O MOUSE */
         .option:hover {
-            background: #2f2f2f; /* Fundo levemente mais claro */
+            background: #2f2f2f; 
             border-color: var(--primary-red);
-            box-shadow: 0 0 10px rgba(217, 30, 24, 0.3); /* GLOW OPACO */
-            transform: translateY(-1px);
+            box-shadow: 0 0 15px rgba(217, 30, 24, 0.5), 0 4px 8px rgba(0, 0, 0, 0.5); /* GLOW + Sombra mais profunda */
+            transform: scale(1.03); /* Leve ZOOM de 3% */
         }
         .option.selected {
             background: var(--dark-red);
             color: #fff;
             border: 1px solid var(--primary-red);
-            box-shadow: 0 0 15px rgba(217, 30, 24, 0.5); /* Efeito de brilho ao selecionar */
+            box-shadow: 0 0 18px rgba(217, 30, 24, 0.7); /* Efeito de brilho ao selecionar */
             transform: scale(1.02); 
         }
         /* Fim do Estilo Novo para Botões */
@@ -108,6 +113,12 @@
             background: #222;
             color: #eee;
             font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input[type=text]:focus, input[type=email]:focus {
+             border-color: var(--primary-red);
+             outline: none;
+             box-shadow: 0 0 5px rgba(217, 30, 24, 0.5);
         }
         
         /* Estilo para Botão Principal (Quero as novidades) */
@@ -121,13 +132,14 @@
             margin-top: 15px; 
             font-size: 18px;
             font-weight: bold;
-            transition: background 0.2s, transform 0.1s;
+            transition: all 0.25s ease-out; /* Transição mais suave para o botão */
             box-shadow: 0 4px 15px rgba(217, 30, 24, 0.4);
-            width: 90%; /* Ajuste para ter largura responsiva */
+            width: 90%; 
         }
         button:hover {
             background: var(--dark-red);
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 6px 20px rgba(217, 30, 24, 0.6);
         }
         /* Fim do Estilo Botão Principal */
 
@@ -138,7 +150,7 @@
             border-radius: 8px;
             font-size: 14px;
             line-height: 1.4;
-            border-left: 4px solid var(--primary-red); /* Linha de destaque */
+            border-left: 4px solid var(--primary-red); 
             text-align: left;
         }
         .novidades h3 {
@@ -175,7 +187,7 @@
                 width: 100%;
             }
             input[type=text], input[type=email] {
-                width: 100%; /* Ocupa toda a largura do quiz */
+                width: 100%; 
             }
             header p {
                 font-size: 14px;
@@ -294,7 +306,7 @@
             selectedOption = "";
         }
 
-        // --- NOVO ARRAY DE 30 CURIOSIDADES PARA AUTOMATIZAÇÃO DIÁRIA ---
+        // --- ARRAY DE 30 CURIOSIDADES PARA AUTOMATIZAÇÃO DIÁRIA ---
         const curiosities = [
             // Curiosidades de 1 a 10 (História e Mecânica)
             "Você sabia que o pneu foi inventado antes do carro? Eles eram usados em bicicletas no final do século 19.",
