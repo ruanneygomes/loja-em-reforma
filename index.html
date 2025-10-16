@@ -3,52 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja do Meu Carro | Peças e Acessórios Automotivos - Em Construção</title>
+    <!-- SEO & Metadata Otimizada -->
+    <title>Loja do Meu Carro | Peças, Acessórios e Performance - Lançamento Breve!</title>
 
+    <!-- Google Analytics - Mantido, mas otimizado para não bloquear o render -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4T4V3N4VE"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-V4T4V3N4VE');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-V4T4V3N4VE');
     </script>
 
-    <meta name="description" content="A nova Loja do Meu Carro está em construção! Deixe sua opinião sobre peças, acessórios e estética automotiva no nosso quiz e garanta um cupom de lançamento exclusivo. Acompanhe a saga da Karavan K20/ZF8 a Las Vegas!">
-    
-    <meta property="og:title" content="Loja do Meu Carro | Em Construção e com Cupom!">
-    <meta property="og:description" content="Deixe sua opinião sobre o que você mais procura e garanta um cupom exclusivo para o lançamento da nova loja.">
-    <meta property="og:image" content="https://placehold.co/1200x630/111/fff?text=LOGO+LOJA+DO+MEU+CARRO">
+    <!-- Meta Tags Otimizadas -->
+    <meta name="description" content="A Loja do Meu Carro será sua nova fonte de peças e acessórios automotivos. Deixe sua opinião no nosso quiz para garantir um cupom de lançamento exclusivo! Acompanhe a saga Karavan K20/ZF8 a Las Vegas.">
+    <meta property="og:title" content="Loja do Meu Carro | Em Construção e com Cupom Exclusivo!">
+    <meta property="og:description" content="Diga o que você mais precisa e garanta um cupom exclusivo para o lançamento da nova loja.">
+    <!-- A URL da imagem foi mantida como placeholder, mas idealmente deve ser substituída por uma imagem real do seu logo -->
+    <meta property="og:image" content="https://placehold.co/1200x630/d91e18/fff?text=LOGO+LOJA+DO+MEU+CARRO">
     <meta property="og:url" content="https://lojadomeucarro.com.br">
     <meta property="og:type" content="website">
 
+    <!-- Favicon SVG (mantido o carro) -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚗</text></svg>">
     
+    <!-- Tailwind CSS CDN para design moderno e responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Cores do Tema */
         :root {
             --primary-red: #d91e18;
             --dark-red: #a81713;
-            --background-dark: #111;
-            --card-bg: #1c1c1c;
         }
 
+        /* Configuração do Tailwind para usar as cores do tema */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-red': 'var(--primary-red)',
+                        'dark-red': 'var(--dark-red)',
+                        'bg-dark': '#1a1a1a',
+                        'card-bg': '#1c1c1c',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+
+        /* Estilo para o fundo de grade sutil */
         body {
-            font-family: 'Inter', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: var(--background-dark);
-            color: #eee;
-            text-align: center;
             background-color: #1a1a1a;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><rect width="10" height="10" fill="none"/><path d="M0 0h5v5H0zM5 5h5v5H5z" fill="%23222" opacity="0.3"/></svg>');
+            font-family: 'Inter', Arial, sans-serif;
         }
-        header {
-            background: #222;
-            color: #fff;
-            padding: 15px 20px 10px; 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+
+        /* Botão principal com gradiente e sombra otimizada */
+        .main-button {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-        
+
+        /* Classe SEO H1 - Mantida a técnica para acessibilidade de leitores de tela */
         .seo-h1 {
             position: absolute;
             width: 1px;
@@ -59,453 +76,405 @@
             clip: rect(0, 0, 0, 0);
             border: 0;
         }
-
-        .logo-container {
-            margin: 5px auto 10px;
-        }
-        .logo-container img {
-            max-width: 220px; 
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.6));
-        }
-        header p {
-            margin-top: 5px;
-            margin-bottom: 5px;
-            font-size: 15px;
-            font-weight: 300;
-        }
-
-        .quiz {
-            background: var(--card-bg);
-            max-width: 600px;
-            margin: 25px auto; 
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-            border: 1px solid #333;
-        }
-        .quiz h2 {
-            font-size: 20px; 
-            margin-bottom: 20px; 
-            color: #fff;
-            font-weight: 600;
-        }
-
-        .option {
-            padding: 12px; 
-            margin: 10px 0; 
-            border-radius: 10px; 
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
-            color: #eee;
-            background: #2a2a2a; 
-            border: 1px solid #444; 
-            font-size: 15px;
-            text-align: center; 
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        .option:hover {
-            background: #2f2f2f; 
-            border-color: var(--primary-red);
-            box-shadow: 0 0 15px rgba(217, 30, 24, 0.5), 0 4px 8px rgba(0, 0, 0, 0.5); 
-            transform: scale(1.03); 
-        }
-        .option.selected {
-            background: var(--dark-red);
-            color: #fff;
-            border: 1px solid var(--primary-red);
-            box-shadow: 0 0 18px rgba(217, 30, 24, 0.7); 
-            transform: scale(1.02); 
-        }
-
-        .hidden {
-            display: none;
-        }
-        input[type=text], input[type=email] {
-            width: 85%;
-            padding: 10px; 
-            margin: 8px 0; 
-            border-radius: 8px;
-            border: 1px solid #444;
-            background: #222;
-            color: #eee;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-        input[type=text]:focus, input[type=email]:focus {
-             border-color: var(--primary-red);
-             outline: none;
-             box-shadow: 0 0 5px rgba(217, 30, 24, 0.5);
-        }
-        
-        .main-button {
-            background: var(--primary-red);
-            color: #fff;
-            padding: 10px 25px; 
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 15px; 
-            font-size: 16px; 
-            font-weight: bold;
-            transition: all 0.25s ease-out; 
-            box-shadow: 0 4px 15px rgba(217, 30, 24, 0.4);
-            width: 90%; 
-        }
-        .main-button:hover:not(:disabled) {
-            background: var(--dark-red);
-            transform: translateY(-2px) scale(1.01);
-            box-shadow: 0 6px 20px rgba(217, 30, 24, 0.6);
-        }
-        .main-button:disabled {
-            background: #444;
-            cursor: not-allowed;
-            opacity: 0.7;
-            transform: none;
-            box-shadow: none;
-        }
-        
-        #submitSuggestionButton {
-            font-size: 16px;
-            padding: 10px 20px;
-            width: 88%; 
-            margin-top: 10px;
-        }
-
-
-        .curiosity {
-            background: #151515; 
-            margin: 10px 0 5px 0; 
-            padding: 10px 15px; 
-            border-radius: 8px;
-            font-size: 14px;
-            line-height: 1.4;
-            border-left: 4px solid var(--primary-red); 
-            text-align: center; 
-        }
-        .curiosity strong {
-             display: block; 
-             margin-bottom: 0px;
-        }
-
-        .novidades {
-            border-top: 1px solid #333;
-            padding-top: 15px;
-            margin-top: 25px;
-        }
-        .novidades h3 {
-            color: var(--primary-red);
-            margin-top: 15px; 
-            margin-bottom: 5px;
-            font-size: 17px;
-            font-weight: 600;
-        }
-        footer {
-            padding: 10px;
-            background: #000;
-            color: #aaa;
-            font-size: 12px;
-        }
-
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease;
-        }
-        .modal-overlay.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        .modal-content {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 10px;
-            max-width: 350px;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(217, 30, 24, 0.7);
-        }
-        .modal-content h4 {
-            color: var(--primary-red);
-            margin-top: 0;
-        }
-        .modal-content p {
-            margin-bottom: 20px;
-        }
-        .modal-content button {
-            width: 100px;
-            padding: 8px;
-            font-size: 16px;
-        }
-
-        @media (max-width: 600px) {
-            .quiz {
-                margin: 10px auto;
-                padding: 15px;
-            }
-            .logo-container img {
-                max-width: 180px; 
-            }
-            .quiz h2 {
-                font-size: 18px;
-            }
-            .option {
-                font-size: 14px;
-            }
-            .main-button {
-                font-size: 16px;
-                width: 100%;
-            }
-            #submitSuggestionButton {
-                width: 100%;
-            }
-            input[type=text], input[type=email] {
-                width: 100%; 
-            }
-            header p {
-                font-size: 14px;
-            }
-        }
     </style>
+    
+    <!-- Imports do Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, collection, getDocs, query, where, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        
+        // Variáveis globais (disponíveis no escopo do <script> principal via window)
+        window.firebaseApp = null;
+        window.db = null;
+        window.auth = null;
+
+        // Variáveis de ambiente fornecidas pelo Canvas
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        
+        if (firebaseConfig) {
+            window.firebaseApp = initializeApp(firebaseConfig);
+            window.db = getFirestore(window.firebaseApp);
+            window.auth = getAuth(window.firebaseApp);
+            
+            // 1. Configuração de Autenticação
+            onAuthStateChanged(window.auth, async (user) => {
+                if (!user) {
+                    // Tenta autenticar com o token personalizado ou anonimamente
+                    try {
+                        if (initialAuthToken) {
+                            await signInWithCustomToken(window.auth, initialAuthToken);
+                        } else {
+                            await signInAnonymously(window.auth);
+                        }
+                    } catch (error) {
+                        console.error("Erro na autenticação Firebase:", error);
+                        document.getElementById('firebaseError').classList.remove('hidden');
+                    }
+                }
+                document.body.classList.add('auth-ready');
+            });
+        } else {
+            document.getElementById('firebaseError').classList.remove('hidden');
+        }
+
+        // 2. Funções de Escrita para Firestore (Coleções Públicas)
+        window.saveQuizResponse = async (interest, name, email) => {
+            if (!window.db || !window.auth.currentUser) return { success: false, error: "Firebase não pronto." };
+
+            const response = {
+                interest: interest,
+                name: name,
+                email: email,
+                timestamp: new Date().toISOString()
+            };
+            
+            const userId = window.auth.currentUser.uid || crypto.randomUUID();
+            const collectionPath = `artifacts/${appId}/public/data/quiz_responses`;
+            
+            try {
+                // Adiciona o interesse/sugestão
+                await addDoc(collection(window.db, collectionPath), response);
+
+                // Se houver e-mail válido, adiciona também à lista de newsletter
+                if (email && email.includes('@') && email.includes('.')) {
+                    await setDoc(doc(window.db, `artifacts/${appId}/public/data/newsletter_subscribers`, email), {
+                        name: name,
+                        email: email,
+                        optedInAt: new Date().toISOString(),
+                        userId: userId,
+                    });
+                }
+                
+                return { success: true };
+            } catch (error) {
+                console.error("Erro ao salvar no Firestore:", error);
+                return { success: false, error: error.message };
+            }
+        };
+
+        // 3. Funções para Envio de Email Único ao Firestore (usada no botão final)
+        window.saveSubscriberEmail = async (name, email) => {
+            if (!window.db || !window.auth.currentUser) return { success: false, error: "Firebase não pronto." };
+
+            const userId = window.auth.currentUser.uid || crypto.randomUUID();
+            const emailClean = email.toLowerCase().trim();
+
+            const docRef = doc(window.db, `artifacts/${appId}/public/data/newsletter_subscribers`, emailClean);
+
+            try {
+                // Tenta buscar se já existe
+                const q = query(collection(window.db, `artifacts/${appId}/public/data/newsletter_subscribers`), where("email", "==", emailClean));
+                const querySnapshot = await getDocs(q);
+
+                if (querySnapshot.docs.length > 0) {
+                    return { success: false, error: "E-mail já cadastrado." };
+                }
+
+                await setDoc(docRef, {
+                    name: name,
+                    email: emailClean,
+                    optedInAt: new Date().toISOString(),
+                    userId: userId,
+                });
+
+                return { success: true };
+            } catch (error) {
+                console.error("Erro ao salvar email no Firestore:", error);
+                return { success: false, error: error.message };
+            }
+        };
+    </script>
+
 </head>
-<body onload="loadSavedData()">
+<body class="min-h-screen text-gray-100 antialiased font-sans">
 
-    <header>
-        <h1 class="seo-h1">Loja do Meu Carro | Peças e Acessórios Automotivos</h1>
+    <!-- SEO H1 Otimizado para focar nas Palavras-chave -->
+    <h1 class="seo-h1">Loja do Meu Carro: Peças de Reposição, Acessórios Internos, Estética, Performance e Customização Automotiva.</h1>
 
-        <div class="logo-container">
-            <img src="logo web loja do meu carro.png" alt="Logo Loja do Meu Carro, especialista em peças e acessórios automotivos" width="220" height="80"
-                onerror="this.onerror=null; this.src='https://placehold.co/220x80/111/fff?text=LOJA+DO+MEU+CARRO'">
+    <header class="bg-gray-900/90 shadow-2xl shadow-black/50 p-4 border-b border-red-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="logo-container">
+                <!-- Imagem com alt, largura, altura e lazy loading para performance -->
+                <img src="logo web loja do meu carro.png" 
+                     alt="Logo Loja do Meu Carro, especialista em peças e acessórios automotivos" 
+                     width="250" height="90"
+                     class="mx-auto block filter drop-shadow-[0_0_15px_rgba(217,30,24,0.8)] rounded-lg"
+                     loading="lazy"
+                     onerror="this.onerror=null; this.src='https://placehold.co/250x90/1c1c1c/fff?text=LOJA+DO+MEU+CARRO'; this.width='250'; this.height='90';">
+            </div>
+            <p class="mt-2 text-sm md:text-base font-light text-red-100">
+                Nova loja em construção. Sua opinião vale um cupom exclusivo para o lançamento!
+            </p>
         </div>
-        <p>Nova loja em construção. Deixe sua opinião e garanta um cupom de lançamento!</p>
     </header>
 
-    <section class="quiz">
-        <h2>O que você mais procura para o seu carro hoje?</h2>
-        <div class="options-container">
-            <div class="option" data-option="Acessórios internos">Acessórios internos (multimídia, tapete, iluminação)</div>
-            <div class="option" data-option="Estética e cuidado">Estética e cuidado (limpeza, polimento)</div>
-            <div class="option" data-option="Performance">Performance (filtros, escapamento, etc.)</div>
-            <div class="option" data-option="Peças de reposição">Peças de reposição</div>
-            <div class="option" onclick="showOther()">Outro...</div>
-        </div>
+    <main class="container mx-auto p-4 flex justify-center items-start">
+        <section class="bg-card-bg w-full max-w-lg mx-auto my-6 p-6 md:p-8 rounded-xl shadow-2xl border border-gray-700">
+            
+            <div id="firebaseError" class="hidden bg-red-800 text-white p-4 rounded-lg mb-6 text-sm font-semibold border-2 border-red-600">
+                ⚠️ Erro de Configuração: O Firebase não está pronto. A coleta de dados não funcionará.
+            </div>
 
-        <div id="otherBox" class="hidden">
-            <input type="text" id="otherInput" placeholder="Digite sua sugestão de produto/categoria">
-            <button id="submitSuggestionButton" class="main-button" onclick="submitSuggestion()">
-                ENVIAR SUGESTÃO
-            </button>
-        </div>
+            <!-- Quiz de Interesse -->
+            <div id="quizSection">
+                <h2 class="text-xl md:text-2xl font-bold mb-6 text-white">O que você mais procura para o seu carro hoje?</h2>
+                
+                <div class="options-container space-y-3">
+                    <div class="option bg-gray-700/50 hover:bg-red-800/80 p-3 md:p-4 rounded-xl cursor-pointer transition duration-300 ease-in-out text-base font-medium border border-gray-600 shadow-md" data-option="Acessórios internos">
+                        Acessórios internos (multimídia, tapete, iluminação)
+                    </div>
+                    <div class="option bg-gray-700/50 hover:bg-red-800/80 p-3 md:p-4 rounded-xl cursor-pointer transition duration-300 ease-in-out text-base font-medium border border-gray-600 shadow-md" data-option="Estética e cuidado">
+                        Estética e cuidado (limpeza, polimento, vitrificação)
+                    </div>
+                    <div class="option bg-gray-700/50 hover:bg-red-800/80 p-3 md:p-4 rounded-xl cursor-pointer transition duration-300 ease-in-out text-base font-medium border border-gray-600 shadow-md" data-option="Performance">
+                        Performance (filtros, escapamento, chip, peças forjadas)
+                    </div>
+                    <div class="option bg-gray-700/50 hover:bg-red-800/80 p-3 md:p-4 rounded-xl cursor-pointer transition duration-300 ease-in-out text-base font-medium border border-gray-600 shadow-md" data-option="Peças de reposição">
+                        Peças de reposição (freios, suspensão, motor, elétrica)
+                    </div>
+                    <div class="option bg-gray-700/50 hover:bg-red-800/80 p-3 md:p-4 rounded-xl cursor-pointer transition duration-300 ease-in-out text-base font-medium border border-gray-600 shadow-md" onclick="showOtherInput(this)">
+                        Outro...
+                    </div>
+                </div>
 
-        <div class="curiosity">
-            <strong>Curiosidade do dia:</strong>
-            <span id="curiosityText"></span>
-        </div>
+                <div id="otherBox" class="hidden mt-4 pt-4 border-t border-gray-700">
+                    <input type="text" id="otherInput" placeholder="Digite sua sugestão de produto/categoria" class="w-full px-4 py-2 mt-2 rounded-lg bg-gray-800 border border-gray-600 focus:border-red-500 focus:ring focus:ring-red-500/50 text-white placeholder-gray-400 text-base">
+                    <button id="submitSuggestionButton" class="main-button bg-primary-red hover:bg-dark-red text-white py-2 px-6 rounded-lg font-bold w-full mt-4 shadow-lg shadow-red-800/40" onclick="submitSuggestion()">
+                        ENVIAR SUGESTÃO
+                    </button>
+                </div>
+            </div>
 
-        <div class="novidades">
-            <h3>Quer receber novidades e um cupom de lançamento?</h3>
-        </div>
+            <!-- Curiosidade do Dia -->
+            <div class="bg-gray-800/50 p-4 rounded-xl mt-6 border border-red-900/50">
+                <p class="text-sm text-red-300 font-semibold mb-1">Curiosidade do dia:</p>
+                <span id="curiosityText" class="text-sm font-light text-gray-200"></span>
+            </div>
 
-        <input type="text" id="nameInput" placeholder="Seu nome (opcional)">
-        <input type="email" id="emailInput" placeholder="Seu e-mail (obrigatório)">
-        <br>
-        <button id="submitEmailButton" class="main-button" onclick="submitEmail()">QUERO RECEBER AS NOVIDADES!</button>
-    </section>
+            <!-- Coleta de E-mail para Novidades -->
+            <div class="novidades mt-8 pt-6 border-t border-gray-700">
+                <h3 class="text-lg font-semibold text-primary-red mb-4">Receba um cupom de lançamento e novidades!</h3>
+                
+                <input type="text" id="nameInput" placeholder="Seu nome (opcional)" class="w-full px-4 py-2 mt-2 rounded-lg bg-gray-800 border border-gray-600 focus:border-red-500 focus:ring focus:ring-red-500/50 text-white placeholder-gray-400 text-base">
+                <input type="email" id="emailInput" placeholder="Seu e-mail (obrigatório)" class="w-full px-4 py-2 mt-2 rounded-lg bg-gray-800 border border-gray-600 focus:border-red-500 focus:ring focus:ring-red-500/50 text-white placeholder-gray-400 text-base">
+                
+                <button id="submitEmailButton" class="main-button bg-primary-red hover:bg-dark-red text-white py-3 px-6 rounded-lg font-bold w-full mt-4 shadow-lg shadow-red-800/50" onclick="submitEmail()">
+                    QUERO RECEBER AS NOVIDADES!
+                </button>
+            </div>
+            
+        </section>
+    </main>
 
-    <footer>
-        <p>Loja do Meu Carro © 2025 - Estamos acelerando uma nova fase</p>
+    <footer class="bg-gray-900/90 text-center p-4 mt-8 border-t border-red-900">
+        <p class="text-xs text-gray-400">Loja do Meu Carro © 2025 - Acelerando uma nova fase. | <span class="text-gray-500">Seu ID de Usuário (Necessário para Suporte): <span id="currentUserId">Aguardando Autenticação...</span></span></p>
     </footer>
 
-    <div id="modalOverlay" class="modal-overlay">
-        <div class="modal-content">
-            <h4 id="modalTitle"></h4>
-            <p id="modalMessage"></p>
-            <button onclick="hideModal()">Entendi</button>
+    <!-- Modal para mensagens/erros (Substitui o alert()) -->
+    <div id="modalOverlay" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300 ease-in-out" onclick="hideModal()">
+        <div class="bg-card-bg p-8 rounded-xl max-w-md w-full text-center shadow-[0_0_35px_rgba(217,30,24,0.7)] transform scale-95 transition-all duration-300 ease-in-out" onclick="event.stopPropagation()">
+            <h4 id="modalTitle" class="text-2xl font-bold text-primary-red mb-3"></h4>
+            <p id="modalMessage" class="text-gray-300 mb-6"></p>
+            <button class="bg-primary-red hover:bg-dark-red text-white font-bold py-2 px-6 rounded-lg transition duration-200" onclick="hideModal()">
+                Entendi
+            </button>
         </div>
     </div>
 
     <script>
-        const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfywwXvO76YA3iai6JYHZ487sATVtCusnxV50tlhgXva5L8pQ/formResponse";
-
-        const ENTRY_ID_INTERESSE = "1460235889"; 
-        const ENTRY_ID_NOME = "837106430";          
-        const ENTRY_ID_EMAIL = "1361017686";         
-        
         let selectedOption = "";
-        let isSubmittingEmail = false; 
-        let isSubmittingSuggestion = false;
+        let isSubmitting = false; // Flag de envio unificado
         
-        const options = document.querySelectorAll('.option[data-option]');
+        // Elementos DOM
+        const options = document.querySelectorAll('.option');
         const submitEmailButton = document.getElementById('submitEmailButton');
         const submitSuggestionButton = document.getElementById('submitSuggestionButton');
         const otherInput = document.getElementById('otherInput');
         const otherBox = document.getElementById('otherBox');
         const nameInput = document.getElementById('nameInput');
         const emailInput = document.getElementById('emailInput');
+        const userIdSpan = document.getElementById('currentUserId');
 
+        // --- Funções de UI e Utilidade ---
 
+        /** Exibe o modal customizado. */
         function showModal(title, message) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalMessage').innerText = message;
-            document.getElementById('modalOverlay').classList.add('visible');
+            const modal = document.getElementById('modalOverlay');
+            modal.classList.add('visible');
+            modal.classList.remove('invisible', 'opacity-0');
+            modal.classList.add('opacity-100');
         }
 
+        /** Esconde o modal. */
         function hideModal() {
-            document.getElementById('modalOverlay').classList.remove('visible');
+            const modal = document.getElementById('modalOverlay');
+            modal.classList.remove('visible', 'opacity-100');
+            modal.classList.add('opacity-0', 'invisible');
         }
 
+        /** Validação básica de e-mail. */
         function isValidEmail(email) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,4}$/;
             return emailRegex.test(email);
         }
-        
-        function saveUserData(name, email) {
-            if (name) localStorage.setItem('user_name', name);
-            if (email) localStorage.setItem('user_email', email);
-        }
 
-        function loadSavedData() {
-            const savedName = localStorage.getItem('user_name');
-            const savedEmail = localStorage.getItem('user_email');
-
-            if (savedName) nameInput.value = savedName;
-            if (savedEmail) emailInput.value = savedEmail;
-        }
-
+        /** Manipula a seleção das opções do quiz. */
         options.forEach(option => {
-            option.addEventListener('click', function() {
-                options.forEach(opt => opt.classList.remove('selected'));
-                this.classList.add('selected');
-                selectedOption = this.getAttribute('data-option');
-                
-                otherBox.classList.add('hidden');
-                otherInput.value = '';
-                
-                submitQuizAnswer(selectedOption); 
-            });
+            if (option.hasAttribute('data-option')) {
+                option.addEventListener('click', function() {
+                    options.forEach(opt => opt.classList.remove('bg-dark-red', 'selected', 'border-red-500'));
+                    this.classList.add('bg-dark-red', 'selected', 'border-red-500');
+                    selectedOption = this.getAttribute('data-option');
+                    
+                    otherBox.classList.add('hidden');
+                    otherInput.value = '';
+                    
+                    // Envia a resposta do quiz automaticamente após a seleção
+                    submitQuizResponse(selectedOption); 
+                });
+            }
         });
 
-        function showOther() {
-            options.forEach(opt => opt.classList.remove('selected'));
-            selectedOption = "";
+        /** Exibe a caixa de texto para sugestões. */
+        function showOtherInput(clickedOption) {
+            options.forEach(opt => opt.classList.remove('bg-dark-red', 'selected', 'border-red-500'));
+            clickedOption.classList.add('bg-dark-red', 'selected', 'border-red-500');
+            selectedOption = "Outro";
             otherBox.classList.remove('hidden');
         }
 
-        async function sendToForms(data, button, originalText, type) {
-            if (button.disabled) return; 
+        // --- Funções Firebase/Firestore (Substituindo Google Forms) ---
+        
+        // Define o texto do botão para loading
+        function setLoadingState(button, isLoading, originalText) {
+            button.disabled = isLoading;
+            button.classList.toggle('opacity-50', isLoading);
+            button.innerText = isLoading ? "Enviando..." : originalText;
+        }
 
-            if (!GOOGLE_FORM_URL || !GOOGLE_FORM_URL.startsWith('https://')) {
-                console.error("Erro: O GOOGLE_FORM_URL não foi preenchido corretamente.");
-                showModal("Erro de Configuração", "O link de envio do Google Forms (GOOGLE_FORM_URL) não foi configurado. Por favor, preencha as constantes na seção <script>.");
-                return;
-            }
+        /** * Envia a resposta do quiz para o Firestore.
+         * É chamada automaticamente ao clicar em uma opção de quiz.
+         */
+        async function submitQuizResponse(answer) {
+            if (isSubmitting || !window.saveQuizResponse) return;
+            isSubmitting = true;
 
+            const name = nameInput.value.trim() || "Resposta do Quiz (Nome Não Informado)";
+            const email = emailInput.value.trim() || "Nao_Fornecido@quiz.com";
 
-            const originalButtonText = button.innerText;
-            
-            button.disabled = true;
-            button.innerText = "Enviando...";
+            // Não altera o estado visual do botão principal, pois é um envio secundário e discreto
+            // Não precisa de validação de email aqui, pois o objetivo principal é registrar o interesse.
 
             try {
-                const formData = new FormData();
-                
-                for (const key in data) {
-                    formData.append(key, data[key]);
+                const result = await window.saveQuizResponse(answer, name, email);
+                if (result.success) {
+                    console.log(`Resposta do Quiz enviada para Firestore: ${answer}`);
+                } else {
+                    console.error("Erro no Quiz:", result.error);
                 }
-                
-                const response = await fetch(`${GOOGLE_FORM_URL}?usp=pp_url`, {
-                    method: 'POST',
-                    body: formData,
-                    mode: 'no-cors' 
-                });
-
-                if (type === 'email') {
-                    saveUserData(data[ENTRY_ID_NOME], data[ENTRY_ID_EMAIL]); 
-                    showModal("Cadastro Concluído!", "E-mail cadastrado com sucesso! Em breve você receberá seu cupom e as novidades.");
-                } else if (type === 'suggestion') {
-                    otherInput.value = '';
-                    otherBox.classList.add('hidden');
-                    showModal("Sugestão Enviada!", "Obrigado pela sua sugestão! Ela foi registrada e será analisada pela nossa equipe.");
-                } else if (type === 'quiz') {
-                    console.log("Resposta do Quiz enviada: " + data[ENTRY_ID_INTERESSE]);
-                }
-
             } catch (error) {
-                console.error('Erro ao enviar para o Forms:', error);
-                showModal("Erro de Envio", "Ocorreu um erro ao enviar seus dados. Verifique a URL do Google Forms e se está conectado à internet. (Detalhe: " + error.message + ")");
+                console.error("Erro fatal ao enviar Quiz:", error);
             } finally {
-                button.disabled = false;
-                button.innerText = originalButtonText;
-                if (type === 'email') isSubmittingEmail = false;
-                if (type === 'suggestion') isSubmittingSuggestion = false;
+                isSubmitting = false;
             }
         }
-        
-        function submitQuizAnswer(answer) {
-             const data = {
-                 ['entry.' + ENTRY_ID_INTERESSE]: answer,
-                 ['entry.' + ENTRY_ID_NOME]: nameInput.value.trim() || "Resposta do Quiz (Nome Não Informado)", 
-                 ['entry.' + ENTRY_ID_EMAIL]: emailInput.value.trim() || "Nao_Fornecido@quiz.com"
-             };
-             sendToForms(data, submitEmailButton, submitEmailButton.innerText, 'quiz');
-        }
 
 
+        /** * Envia a sugestão de produto para o Firestore.
+         * Chamada ao clicar no botão "ENVIAR SUGESTÃO".
+         */
         async function submitSuggestion() {
-            if (isSubmittingSuggestion) return;
-            isSubmittingSuggestion = true;
-
+            if (isSubmitting) return;
+            
             const suggestionValue = otherInput.value.trim();
 
             if (!suggestionValue) {
-                isSubmittingSuggestion = false;
-                showModal("Atenção", "Por favor, digite sua sugestão para enviá-la."); 
+                showModal("Atenção", "Por favor, digite sua sugestão para enviá-la.");
                 return;
             }
 
-            const data = {
-                ['entry.' + ENTRY_ID_INTERESSE]: "Sugestão de Produto: " + suggestionValue,
-                ['entry.' + ENTRY_ID_NOME]: nameInput.value.trim() || "Sugestão (Nome Não Informado)", 
-                ['entry.' + ENTRY_ID_EMAIL]: emailInput.value.trim() || "Nao_Fornecido@sugestao.com" 
-            };
+            isSubmitting = true;
+            setLoadingState(submitSuggestionButton, true, "ENVIAR SUGESTÃO");
+
+            const name = nameInput.value.trim() || "Sugestão (Nome Não Informado)";
+            const email = emailInput.value.trim() || "Nao_Fornecido@sugestao.com";
+            const interest = "Sugestão de Produto: " + suggestionValue;
             
-            await sendToForms(data, submitSuggestionButton, "ENVIAR SUGESTÃO", 'suggestion');
+            try {
+                const result = await window.saveQuizResponse(interest, name, email);
+
+                if (result.success) {
+                    otherInput.value = '';
+                    otherBox.classList.add('hidden');
+                    options.forEach(opt => opt.classList.remove('bg-dark-red', 'selected', 'border-red-500'));
+                    showModal("Sugestão Enviada!", "Obrigado! Sua sugestão foi registrada com sucesso.");
+                } else {
+                    showModal("Erro no Envio", "Ocorreu um erro ao registrar sua sugestão: " + result.error);
+                }
+            } catch (error) {
+                showModal("Erro Crítico", "Não foi possível conectar ao sistema de dados. Detalhe: " + error.message);
+            } finally {
+                isSubmitting = false;
+                setLoadingState(submitSuggestionButton, false, "ENVIAR SUGESTÃO");
+            }
         }
 
-        async function submitEmail() {
-            if (isSubmittingEmail) return;
-            isSubmittingEmail = true;
 
+        /** * Envia o e-mail para lista de novidades.
+         * Chamada ao clicar no botão "QUERO RECEBER AS NOVIDADES!".
+         */
+        async function submitEmail() {
+            if (isSubmitting) return;
+            
             const emailValue = emailInput.value.trim();
-            const nameValue = nameInput.value.trim();
+            const nameValue = nameInput.value.trim() || "Não Informado";
 
             if (!emailValue || !isValidEmail(emailValue)) {
-                isSubmittingEmail = false;
                 showModal("E-mail Inválido", "Por favor, digite um e-mail válido para receber o cupom.");
                 return;
             }
+            if (!window.saveSubscriberEmail) {
+                showModal("Erro de Sistema", "O sistema de dados (Firebase) não está inicializado. Tente recarregar a página.");
+                return;
+            }
             
-            const data = {
-                ['entry.' + ENTRY_ID_INTERESSE]: "Interesse em Novidades e Cupom", 
-                ['entry.' + ENTRY_ID_NOME]: nameValue || "Não Informado",
-                ['entry.' + ENTRY_ID_EMAIL]: emailValue
-            };
+            isSubmitting = true;
+            setLoadingState(submitEmailButton, true, "QUERO RECEBER AS NOVIDADES!");
 
-            await sendToForms(data, submitEmailButton, "QUERO RECEBER AS NOVIDADES!", 'email');
+            try {
+                // Tenta salvar o email na coleção de newsletter
+                const result = await window.saveSubscriberEmail(nameValue, emailValue);
+
+                if (result.success) {
+                    // Limpa o email/nome após o sucesso (opcional, mas bom para UX)
+                    nameInput.value = nameValue; 
+                    emailInput.value = emailValue; 
+                    showModal("Cadastro Concluído!", "E-mail cadastrado! Em breve você receberá seu cupom e as novidades.");
+                    
+                    // Adicionalmente, salva a intenção de cupom no log de quiz (apenas por segurança)
+                    await window.saveQuizResponse("Interesse em Novidades e Cupom", nameValue, emailValue);
+                } else if (result.error === "E-mail já cadastrado.") {
+                    showModal("E-mail Já Cadastrado", "Parece que você já está na nossa lista de espera! Fique tranquilo, seu cupom está garantido.");
+                } else {
+                    showModal("Erro no Envio", "Ocorreu um erro ao registrar seu e-mail: " + result.error);
+                }
+            } catch (error) {
+                showModal("Erro Crítico", "Não foi possível conectar ao sistema de dados. Detalhe: " + error.message);
+            } finally {
+                isSubmitting = false;
+                setLoadingState(submitEmailButton, false, "QUERO RECEBER AS NOVIDADES!");
+            }
         }
 
+        // --- Lógica da Curiosidade do Dia ---
+
         const curiosities = [
+            // Mantendo a lista original de curiosidades
             "O projeto Karavan ACF a Las Vegas foi selecionado para ser um dos finalistas do prestigiado **'Battle of the Builders' no SEMA Show 2025**, a maior feira de customização do mundo. O carro competirá como um dos melhores projetos do ano.",
             "A Caravan original foi totalmente transformada com o motor **K20/K24 da Honda** e um câmbio automático **ZF8HP de 8 marchas**, uma das adaptações mais insanas e complexas já feitas no Brasil, que a ACF está levando rodando até os EUA.",
             "O nome **'Karavan' com K** foi escolhido como uma homenagem ao motor **K20 da Honda**, que é o coração de performance do projeto. O carro vai percorrer **mais de 16.000 km** do Brasil até Las Vegas.",
@@ -548,6 +517,7 @@
             "Um carro elétrico, como o **Tesla Model S Plaid**, detém o recorde de aceleração para um veículo de produção, atingindo 100 km/h em menos de 2 segundos, um feito impressionante."
         ];
 
+        /** Seleciona uma curiosidade do dia de forma consistente. */
         function getCuriosityOfTheDay(curiosityList) {
             const today = new Date();
             const startOfYear = new Date(today.getFullYear(), 0, 0);
@@ -559,7 +529,29 @@
             return curiosityList[index];
         }
 
-        document.getElementById("curiosityText").innerHTML = getCuriosityOfTheDay(curiosities);
+        // --- Inicialização e Autenticação (Chama na Autenticação) ---
+        
+        document.body.onload = function() {
+            // Exibe a curiosidade
+            document.getElementById("curiosityText").innerHTML = getCuriosityOfTheDay(curiosities);
+            
+            // Adiciona listener para a autenticação
+            if (window.auth) {
+                window.auth.onAuthStateChanged((user) => {
+                    if (user) {
+                        userIdSpan.textContent = user.uid;
+                    } else {
+                        userIdSpan.textContent = 'Anonimo';
+                    }
+                });
+            }
+        };
+
+        // Adiciona um listener para logar erros no console
+        console.setLogLevel = function(level) {
+            console.log(`Log Level set to ${level}`);
+        };
+        console.setLogLevel('Debug');
     </script>
 
 </body>
